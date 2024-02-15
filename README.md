@@ -29,11 +29,20 @@ Me llamo Camilo Hernandez, soy estudiante de ingenieria de sistemas en sexto sem
 
 La aplicación móvil "HIDE" propone una experiencia única y emocionante al organizar competiciones entre amigos basadas en la geolocalización y la interacción fotográfica. Diseñada para fortalecer los lazos sociales, HIDE utiliza tecnologías avanzadas como el GPS, la cámara y el reconocimiento facial para proporcionar una experiencia de vanguardia en dispositivos móviles.
 
+## Diagrama de casos de uso
+
+## Diagrama de clases
+
+## Pantallas principales 
+
 ## Instalación
 
 
 
 ## Uso
+
+
+
 
 
 
