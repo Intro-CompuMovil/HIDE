@@ -62,3 +62,4 @@ Siéntete libre de contribuir al proyecto. Puedes informar problemas, enviar sol
 
 Este proyecto está bajo la licencia GNU General Public License v3.0. Consulta el archivo LICENSE.md para obtener más detalles.
 
+
