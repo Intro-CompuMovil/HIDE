@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="382dp"
+        android:layout_height="42dp"
+        app:srcCompat="@drawable/registro"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="48dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editTextFirstName"
+        android:layout_width="338dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Your First Name"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="167dp"
+        tools:ignore="MissingConstraints"/>
+
+    <EditText
+        android:id="@+id/editTextLastName"
+        android:layout_width="338dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Your Last Name"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="235dp"
+        tools:ignore="MissingConstraints"/>
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="338dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="Your Email Addres"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="307dp"
+        tools:ignore="MissingConstraints"/>
+
+    <EditText
+        android:id="@+id/editTextPickPassword"
+        android:layout_width="338dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Pick a Password"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="373dp"
+        tools:ignore="MissingConstraints"/>
+
+    <EditText
+        android:id="@+id/editTextConfirmPassword"
+        android:layout_width="338dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Confirm Your Password"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="446dp"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/textViewRulesPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The password must be at least 7 letters and 1 digits"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="519dp"
+        tools:ignore="MissingConstraints"/>
+
+    <Button
+        android:id="@+id/buttonSingUP"
+        android:layout_width="182dp"
+        android:layout_height="51dp"
+        android:text="SIGN UP"
+        tools:layout_editor_absoluteX="114dp"
+        tools:layout_editor_absoluteY="619dp"
+        tools:ignore="MissingConstraints"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

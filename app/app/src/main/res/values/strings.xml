@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ProyectoGoldenTrio</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="register">Register</string>
+    <string name="don_t_have_an_account">Don´t have an Account?</string>
+    <string name="sign_in_with_apple">Sign in with Apple</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="username">Username</string>
+</resources>
