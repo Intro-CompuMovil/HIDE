@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,6 +8,7 @@
     tools:context=".AddFriendActivity"
     tools:layout_editor_absoluteX="-7dp"
     tools:layout_editor_absoluteY="162dp">
+
 
     <TextView
         android:id="@+id/titulo"
@@ -23,7 +24,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.035" />
-
 
     <EditText
         android:id="@+id/addorremove"
@@ -63,11 +63,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/recommend_friends"
+        android:id="@+id/my_friends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/chewy"
-        android:text="Recommended friends"
+        android:text="my friends"
         android:textColor="#020000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -77,4 +77,70 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.255" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <ImageView
+        android:id="@+id/imageView37"
+        android:layout_width="45dp"
+        android:layout_height="47dp"
+        android:src="@drawable/profile_png_free_image"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="223dp" />
+
+    <TextView
+        android:id="@+id/namerecommendedfriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="First and last name"
+        android:textColor="#020000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.356"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.316" />
+
+    <TextView
+        android:id="@+id/userrecomended"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" @user"
+        tools:layout_editor_absoluteX="94dp"
+        tools:layout_editor_absoluteY="249dp" />
+
+    <ImageButton
+        android:id="@+id/deletedrecommended"
+        android:layout_width="32dp"
+        android:layout_height="31dp"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        tools:layout_editor_absoluteX="353dp"
+        tools:layout_editor_absoluteY="223dp" />
+
+    <Button
+        android:id="@+id/suggestions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="suggestions"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="648dp" />
+
+    <Button
+        android:id="@+id/friends"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="friends"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="648dp" />
+
+
+    <Button
+        android:id="@+id/request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="request"
+        tools:layout_editor_absoluteX="285dp"
+        tools:layout_editor_absoluteY="648dp" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

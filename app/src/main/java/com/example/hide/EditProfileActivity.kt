@@ -1,4 +1,4 @@
-package com.example.proyectogoldentrio
+package com.example.hide
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
