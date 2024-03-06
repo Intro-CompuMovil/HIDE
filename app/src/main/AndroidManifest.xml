@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <application
+
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -11,34 +16,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HIDE"
-        tools:targetApi="31">
+        tools:targetApi="31"   >
         <activity
-            android:name=".NotificationsActivity"
+            android:name=".AddFriendActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".BlockedUsersActivity"
             android:exported="false" />
         <activity
-            android:name=".FriendRequestActivity"
+            android:name=".EditProfileActivity"
             android:exported="false" />
         <activity
             android:name=".MyFriendsActivity"
             android:exported="false"
             android:theme="@style/Theme.HIDE" />
         <activity
-            android:name=".AddFriendActivity"
+            android:name=".FriendRequestActivity"
             android:exported="false" />
         <activity
-            android:name=".activity_addfriend"
+            android:name=".MatchFoundActivity"
             android:exported="false" />
         <activity
-            android:name=".activity_"
+            android:name=".NotificationsActivity"
             android:exported="false" />
         <activity
-            android:name=".activity_register"
+            android:name=".OthersActivity"
             android:exported="false" />
         <activity
-            android:name="."
+            android:name=".PrivacyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -53,6 +67,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>
