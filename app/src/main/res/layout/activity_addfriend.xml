@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textUserInhide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/share"
+        android:id="@+id/sharelink"
         android:layout_width="299dp"
         android:layout_height="48dp"
         android:layout_marginTop="108dp"
@@ -136,7 +136,7 @@
 
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/bottonRetroceder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -146,7 +146,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView37"
+        android:id="@+id/fotousuario"
         android:layout_width="45dp"
         android:layout_height="47dp"
         android:layout_marginStart="24dp"

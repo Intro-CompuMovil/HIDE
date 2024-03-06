@@ -7,26 +7,29 @@
     tools:context=".OthersActivity">
 
     <ImageView
-        android:id="@+id/imageView35"
+        android:id="@+id/imageViewOthers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/gagalin__9_"
         tools:layout_editor_absoluteX="132dp"
-        tools:layout_editor_absoluteY="19dp" />
+        tools:layout_editor_absoluteY="19dp"
+        tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/imageView36"
+    <ImageButton
+        android:id="@+id/bottonRetroceder"
         android:layout_width="55dp"
         android:layout_height="36dp"
-        app:srcCompat="@drawable/_45680"
+        app:srcCompat="?attr/actionModeCloseDrawable"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="16dp"
+        tools:ignore="MissingConstraints"/>
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/buttonDeleteAcount"
         android:layout_width="242dp"
         android:layout_height="62dp"
         android:text="Delete Acount"
         tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="122dp" />
+        tools:layout_editor_absoluteY="122dp"
+        tools:ignore="MissingConstraints"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

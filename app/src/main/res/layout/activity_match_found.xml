@@ -7,7 +7,7 @@
     tools:context=".MatchFoundActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewContactos"
         android:layout_width="49dp"
         android:layout_height="52dp"
         app:srcCompat="@drawable/_7115"
@@ -16,7 +16,7 @@
         tools:ignore="MissingConstraints"/>
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageViewTituloHide"
         android:layout_width="159dp"
         android:layout_height="43dp"
         app:srcCompat="@drawable/gagalin__1_"
@@ -25,7 +25,7 @@
         tools:ignore="MissingConstraints"/>
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imageViewProfile"
         android:layout_width="51dp"
         android:layout_height="50dp"
         app:srcCompat="@drawable/profile_png_free_image"
@@ -34,7 +34,7 @@
         tools:ignore="MissingConstraints"/>
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imageViewMainMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/gagalin__2_"
@@ -43,7 +43,7 @@
         tools:ignore="MissingConstraints"/>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewinformacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your friend is in the range shown on the map"
@@ -52,7 +52,7 @@
         tools:ignore="MissingConstraints"/>
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/imageViewMapa"
         android:layout_width="317dp"
         android:layout_height="349dp"
         app:srcCompat="@drawable/hora_1"
@@ -61,7 +61,7 @@
         tools:ignore="MissingConstraints"/>
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/imageViewclock"
         android:layout_width="62dp"
         android:layout_height="54dp"
         app:srcCompat="@drawable/crono"
@@ -70,7 +70,7 @@
         tools:ignore="MissingConstraints"/>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewaviso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="You have 5 minutes to find your friend and take the photo."

@@ -7,16 +7,17 @@
     tools:context=".PrivacyActivity">
 
     <ImageView
-        android:id="@+id/imageView28"
+        android:id="@+id/imageViewPrivacy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/gagalin__7_"
         tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="31dp" />
+        tools:layout_editor_absoluteY="31dp"
+        tools:ignore="MissingConstraints"/>
 
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonUserblocks"
         android:layout_width="375dp"
         android:layout_height="54dp"
         android:background="@color/azul_claro"
@@ -26,7 +27,7 @@
         tools:layout_editor_absoluteY="141dp" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonHiddenUser"
         android:layout_width="375dp"
         android:layout_height="54dp"
         android:background="@color/azul_claro"
@@ -36,7 +37,7 @@
         tools:layout_editor_absoluteY="211dp" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttoncontactoscel"
         android:layout_width="375dp"
         android:layout_height="54dp"
         android:background="@color/azul_claro"
@@ -50,55 +51,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteX="345dp"
-        tools:layout_editor_absoluteY="299dp" />
+        tools:layout_editor_absoluteY="299dp"
+        tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/imageView29"
-        android:layout_width="39dp"
-        android:layout_height="30dp"
-        app:srcCompat="@drawable/_43"
-        tools:layout_editor_absoluteX="345dp"
-        tools:layout_editor_absoluteY="151dp" />
-
-    <ImageView
-        android:id="@+id/imageView29"
-        android:layout_width="39dp"
-        android:layout_height="30dp"
-        app:srcCompat="@drawable/_43"
-        tools:layout_editor_absoluteX="345dp"
-        tools:layout_editor_absoluteY="225dp" />
-
-    <ImageView
-        android:id="@+id/imageView30"
-        android:layout_width="40dp"
-        android:layout_height="36dp"
-        app:srcCompat="@android:drawable/ic_secure"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="151dp" />
-
-    <ImageView
-        android:id="@+id/imageView31"
-        android:layout_width="48dp"
-        android:layout_height="46dp"
-        app:srcCompat="@android:drawable/ic_menu_view"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="211dp" />
-
-    <ImageView
-        android:id="@+id/imageView32"
-        android:layout_width="34dp"
-        android:layout_height="28dp"
-        app:srcCompat="@android:drawable/stat_sys_phone_call"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="298dp" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/buttonSave"
         android:layout_width="199dp"
         android:layout_height="50dp"
         android:text="SAVE"
         tools:layout_editor_absoluteX="106dp"
-        tools:layout_editor_absoluteY="639dp" />
+        tools:layout_editor_absoluteY="639dp"
+        tools:ignore="MissingConstraints"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
