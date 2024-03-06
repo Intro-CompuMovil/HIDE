@@ -81,9 +81,11 @@
         android:id="@+id/imageView37"
         android:layout_width="45dp"
         android:layout_height="47dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="220dp"
         android:src="@drawable/profile_png_free_image"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="223dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/namerecommendedfriend"
@@ -104,50 +106,63 @@
         android:id="@+id/userrecomended"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="248dp"
         android:text=" @user"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="249dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/deletedrecommended"
         android:layout_width="32dp"
         android:layout_height="31dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="24dp"
         android:src="@android:drawable/ic_menu_close_clear_cancel"
-        tools:layout_editor_absoluteX="353dp"
-        tools:layout_editor_absoluteY="223dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/suggestions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:text="suggestions"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="648dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/friends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="32dp"
         android:text="friends"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="648dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
     <Button
         android:id="@+id/request"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
         android:text="request"
-        tools:layout_editor_absoluteX="285dp"
-        tools:layout_editor_absoluteY="648dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="?attr/actionModeCloseDrawable"
-        tools:layout_editor_absoluteX="354dp"
-        tools:layout_editor_absoluteY="-1dp" />
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
