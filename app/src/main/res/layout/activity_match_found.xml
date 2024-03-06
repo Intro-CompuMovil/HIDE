@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MatchFound">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="49dp"
+        android:layout_height="52dp"
+        app:srcCompat="@drawable/_7115"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp"
+        tools:ignore="MissingConstraints"/>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="159dp"
+        android:layout_height="43dp"
+        app:srcCompat="@drawable/gagalin__1_"
+        tools:layout_editor_absoluteX="126dp"
+        tools:layout_editor_absoluteY="11dp"
+        tools:ignore="MissingConstraints"/>
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="51dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/profile_png_free_image"
+        tools:layout_editor_absoluteX="359dp"
+        tools:layout_editor_absoluteY="6dp"
+        tools:ignore="MissingConstraints"/>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/gagalin__2_"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="104dp"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your friend is in the range shown on the map"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="175dp"
+        tools:ignore="MissingConstraints"/>
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="317dp"
+        android:layout_height="349dp"
+        app:srcCompat="@drawable/hora_1"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="194dp"
+        tools:ignore="MissingConstraints"/>
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="62dp"
+        android:layout_height="54dp"
+        app:srcCompat="@drawable/crono"
+        tools:layout_editor_absoluteX="174dp"
+        tools:layout_editor_absoluteY="525dp"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You have 5 minutes to find your friend and take the photo."
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="593dp"
+        tools:ignore="MissingConstraints"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="214dp"
+        android:layout_height="50dp"
+        android:text="Found it"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="645dp"
+        tools:ignore="MissingConstraints"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

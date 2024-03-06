@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="147dp"
+        android:layout_height="144dp"
+        app:srcCompat="@drawable/logo_the_golden_trio"
+        tools:layout_editor_absoluteX="132dp"
+        tools:layout_editor_absoluteY="29dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageViewWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/gagalin"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="184dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/username"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="239dp"
+        tools:ignore="MissingConstraints"
+        />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/password"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="304dp"
+        tools:ignore="MissingConstraints,TextFields" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="337dp"
+        android:layout_height="57dp"
+        android:background="@color/azul_claro"
+        android:text="Login"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="374dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewForget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forget_password"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="438dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="337dp"
+        android:layout_height="57dp"
+        android:text="@string/register"
+        android:background="#35C4F3"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="471dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/don_t_have_an_account"
+        tools:layout_editor_absoluteX="132dp"
+        tools:layout_editor_absoluteY="539dp"
+        tools:ignore="MissingConstraints"/>
+
+    <Button
+        android:id="@+id/buttonApple"
+        android:layout_width="337dp"
+        android:layout_height="57dp"
+        android:text="@string/sign_in_with_apple"
+        android:background="@color/black"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="594dp"
+        tools:ignore="MissingConstraints"/>
+
+    <Button
+        android:id="@+id/buttonGoogle"
+        android:layout_width="337dp"
+        android:layout_height="57dp"
+        android:text="@string/sign_in_with_google"
+        android:background="@color/black"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="658dp"
+        tools:ignore="MissingConstraints"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

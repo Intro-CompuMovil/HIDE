@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AddFriendActivity"
+        tools:layout_editor_absoluteX="-7dp"
+        tools:layout_editor_absoluteY="162dp">
+
+    <Button
+        android:id="@+id/request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="request"
+        tools:layout_editor_absoluteX="307dp"
+        tools:layout_editor_absoluteY="648dp" />
+
+    <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" @user"
+            tools:layout_editor_absoluteX="94dp"
+            tools:layout_editor_absoluteY="407dp" />
+
+        <TextView
+            android:id="@+id/namefriend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="First and last name"
+            android:textColor="#020000"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.356"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.54" />
+
+        <TextView
+            android:id="@+id/contacts_friends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="My contacts in hide"
+            android:textColor="#020000"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.103"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.476" />
+
+
+
+        <ImageView
+            android:id="@+id/imagecontact"
+            android:layout_width="45dp"
+            android:layout_height="47dp"
+            android:src="@drawable/profile_png_free_image"
+            tools:layout_editor_absoluteX="35dp"
+            tools:layout_editor_absoluteY="381dp" />
+
+
+    <EditText
+        android:id="@+id/addorremove"
+        android:layout_width="297dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:ems="10"
+        android:fontFamily="@font/allerta"
+        android:inputType="text"
+        android:padding="35px"
+        android:text="Add or remove friends"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/share"
+        android:layout_width="299dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="108dp"
+        android:background="@drawable/rounded_edittext_blue"
+        android:ems="10"
+        android:fontFamily="@font/allerta"
+        android:inputType="text"
+        android:padding="35px"
+        android:text="share your hide profile"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="HIDE"
+            android:textColor="#020000"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.035" />
+
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="delete"
+        tools:layout_editor_absoluteX="273dp"
+        tools:layout_editor_absoluteY="378dp" />
+
+    <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="?attr/actionModeCloseDrawable"
+            tools:layout_editor_absoluteX="6dp"
+            tools:layout_editor_absoluteY="7dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="32dp"
+            android:layout_height="31dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            tools:layout_editor_absoluteX="373dp"
+            tools:layout_editor_absoluteY="223dp" />
+
+
+
+
+    <ImageView
+        android:id="@+id/imageView37"
+        android:layout_width="45dp"
+        android:layout_height="47dp"
+        android:src="@drawable/profile_png_free_image"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="223dp" />
+
+    <TextView
+        android:id="@+id/namerecommendedfriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="First and last name"
+        android:textColor="#020000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.356"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.316" />
+
+
+
+    <TextView
+        android:id="@+id/recommend_friends"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="Recommended friends"
+        android:textColor="#020000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.255" />
+
+
+
+
+
+
+
+    <TextView
+        android:id="@+id/userrecomended"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" @user"
+        tools:layout_editor_absoluteX="94dp"
+        tools:layout_editor_absoluteY="249dp" />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add"
+        tools:layout_editor_absoluteX="273dp"
+        tools:layout_editor_absoluteY="216dp" />
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="?attr/actionModeCloseDrawable"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="7dp" />
+
+    <ImageButton
+        android:id="@+id/deletedrecommended"
+        android:layout_width="32dp"
+        android:layout_height="31dp"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        tools:layout_editor_absoluteX="373dp"
+        tools:layout_editor_absoluteY="223dp" />
+
+    <Button
+        android:id="@+id/suggestions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="suggestions"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="648dp" />
+
+    <Button
+        android:id="@+id/friends"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="friends"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="648dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
