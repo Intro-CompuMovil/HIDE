@@ -13,6 +13,12 @@
         android:theme="@style/Theme.HIDE"
         tools:targetApi="31">
         <activity
+            android:name=".NotificationsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".FriendRequestActivity"
             android:exported="false" />
         <activity
@@ -32,7 +38,7 @@
             android:name=".activity_register"
             android:exported="false" />
         <activity
-            android:name=".activity_login"
+            android:name="."
             android:exported="false" />
         <activity
             android:name=".MainActivity"
