@@ -17,12 +17,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/gagalin__9_"
+
+
         tools:ignore="MissingConstraints" />
 
     <ImageButton
         android:id="@+id/bottonRetroceder"
         android:layout_width="55dp"
         android:layout_height="36dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
@@ -32,11 +35,13 @@
         app:srcCompat="?attr/actionModeCloseDrawable"
         tools:ignore="MissingConstraints" />
 
+
     <Button
         android:id="@+id/buttonDeleteAcount"
         android:layout_width="242dp"
         android:layout_height="62dp"
         android:text="Delete Acount"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -44,4 +49,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.209"
         tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
