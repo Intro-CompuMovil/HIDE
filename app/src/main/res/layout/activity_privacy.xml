@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,7 +13,8 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/gagalin__7_"
         tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="31dp" />
+        tools:layout_editor_absoluteY="31dp"
+        tools:ignore="MissingConstraints"/>
 
 
     <Button
@@ -25,48 +27,13 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="141dp" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="375dp"
-        android:layout_height="54dp"
-        android:background="@color/azul_claro"
-        android:text="Hidden Users"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="211dp" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="375dp"
-        android:layout_height="54dp"
-        android:background="@color/azul_claro"
-        android:text="Find me through my phone number"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="285dp" />
-
-    <Switch
-        android:id="@+id/switch3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="345dp"
-        tools:layout_editor_absoluteY="299dp" />
-
     <ImageView
-        android:id="@+id/imageView29"
+        android:id="@+id/imageView33"
         android:layout_width="39dp"
         android:layout_height="30dp"
         app:srcCompat="@drawable/_43"
         tools:layout_editor_absoluteX="345dp"
         tools:layout_editor_absoluteY="151dp" />
-
-    <ImageView
-        android:id="@+id/imageView29"
-        android:layout_width="39dp"
-        android:layout_height="30dp"
-        app:srcCompat="@drawable/_43"
-        tools:layout_editor_absoluteX="345dp"
-        tools:layout_editor_absoluteY="225dp" />
 
     <ImageView
         android:id="@+id/imageView30"
@@ -75,22 +42,6 @@
         app:srcCompat="@android:drawable/ic_secure"
         tools:layout_editor_absoluteX="28dp"
         tools:layout_editor_absoluteY="151dp" />
-
-    <ImageView
-        android:id="@+id/imageView31"
-        android:layout_width="48dp"
-        android:layout_height="46dp"
-        app:srcCompat="@android:drawable/ic_menu_view"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="211dp" />
-
-    <ImageView
-        android:id="@+id/imageView32"
-        android:layout_width="34dp"
-        android:layout_height="28dp"
-        app:srcCompat="@android:drawable/stat_sys_phone_call"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="298dp" />
 
     <Button
         android:id="@+id/button7"

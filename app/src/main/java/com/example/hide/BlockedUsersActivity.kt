@@ -1,7 +1,10 @@
 package com.example.hide
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
 import com.example.hide.databinding.ActivityUserBlockedsBinding
 
 class BlockedUsersActivity : AppCompatActivity() {
@@ -12,7 +15,12 @@ class BlockedUsersActivity : AppCompatActivity() {
 
         binding = ActivityUserBlockedsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val botonRegresar= findViewById<ImageView>(R.id.imageView34)
 
+        botonRegresar.setOnClickListener {
+            val intent= Intent(this, PrivacyActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }

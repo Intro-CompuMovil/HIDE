@@ -8,6 +8,9 @@ import android.content.pm.PackageManager
 import android.content.Intent
 import android.provider.MediaStore
 import android.graphics.Bitmap
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
 import com.example.hide.databinding.ActivityMatchFoundBinding
 
 class MatchFoundActivity : AppCompatActivity() {
@@ -19,6 +22,19 @@ class MatchFoundActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMatchFoundBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val botonAmigos = findViewById<ImageView>(R.id.imageButtonAmigos)
+        val botonPerfil = findViewById<ImageView>(R.id.imageButtonPerfil)
+
+        botonPerfil.setOnClickListener{
+            val intent= Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        botonAmigos.setOnClickListener{
+            val intent= Intent(this, AddFriendActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.buttonphoto.setOnClickListener {
             requestCamera()
