@@ -16,8 +16,8 @@ class EditProfileActivity : AppCompatActivity() {
         binding = ActivityEditprofileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val botonCancelar = findViewById<Button>(R.id.button2)
-        val botonGuardar = findViewById<Button>(R.id.button3)
+        val botonCancelar = findViewById<Button>(R.id.buttonCancel)
+        val botonGuardar = findViewById<Button>(R.id.buttonSave)
 
         botonCancelar.setOnClickListener {
             val intent= Intent(this, ProfileActivity::class.java)

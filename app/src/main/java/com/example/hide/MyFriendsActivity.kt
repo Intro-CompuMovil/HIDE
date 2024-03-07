@@ -21,7 +21,7 @@ class MyFriendsActivity : AppCompatActivity() {
 
         binding = ActivityMyFriendsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val botonRegreso = findViewById<ImageButton>(R.id.imageButtonRegreso2)
+        val botonRegreso = findViewById<ImageButton>(R.id.bottonRetroceder)
         val botonSugerencias = findViewById<Button>(R.id.friends)
         val botonSolicitud = findViewById<Button>(R.id.suggestions)
 

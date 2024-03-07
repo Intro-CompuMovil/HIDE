@@ -23,8 +23,8 @@ class MatchFoundActivity : AppCompatActivity() {
         binding = ActivityMatchFoundBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val botonAmigos = findViewById<ImageView>(R.id.imageButtonAmigos)
-        val botonPerfil = findViewById<ImageView>(R.id.imageButtonPerfil)
+        val botonAmigos = findViewById<ImageView>(R.id.imageViewContactos)
+        val botonPerfil = findViewById<ImageView>(R.id.imageViewProfile)
 
         botonPerfil.setOnClickListener{
             val intent= Intent(this, ProfileActivity::class.java)

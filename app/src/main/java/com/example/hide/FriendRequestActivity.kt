@@ -18,7 +18,7 @@ class FriendRequestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFriendRequestBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val botonRegreso = findViewById<ImageButton>(R.id.imageButtonRegreso)
+        val botonRegreso = findViewById<ImageButton>(R.id.bottonRetroceder)
         val botonMisAmigos = findViewById<Button>(R.id.friends)
         val botonSugerencias = findViewById<Button>(R.id.suggestions)
 

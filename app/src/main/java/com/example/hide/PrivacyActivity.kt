@@ -14,8 +14,8 @@ class PrivacyActivity : AppCompatActivity() {
 
         binding = ActivityPrivacyBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val botonGuardar = findViewById<Button>(R.id.button7)
-        val botonBloqueados = findViewById<Button>(R.id.button4)
+        val botonGuardar = findViewById<Button>(R.id.buttonSave)
+        val botonBloqueados = findViewById<Button>(R.id.buttonUserblocks)
 
         botonGuardar.setOnClickListener {
             val intent= Intent(this, SettingsActivity::class.java)

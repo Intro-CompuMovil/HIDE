@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import com.example.hide.databinding.ActivityUserBlockedsBinding
 
@@ -15,7 +16,7 @@ class BlockedUsersActivity : AppCompatActivity() {
 
         binding = ActivityUserBlockedsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val botonRegresar= findViewById<ImageView>(R.id.imageView34)
+        val botonRegresar= findViewById<ImageButton>(R.id.bottonRetroceder)
 
         botonRegresar.setOnClickListener {
             val intent= Intent(this, PrivacyActivity::class.java)

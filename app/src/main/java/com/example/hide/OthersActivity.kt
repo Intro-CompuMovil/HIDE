@@ -15,8 +15,8 @@ class OthersActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityOthersBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val botonRegresar= findViewById<ImageView>(R.id.imageView34)
-        val botonEliminar= findViewById<Button>(R.id.button8)
+        val botonRegresar= findViewById<ImageView>(R.id.bottonRetroceder)
+        val botonEliminar= findViewById<Button>(R.id.buttonDeleteAcount)
 
         botonRegresar.setOnClickListener {
             val intent= Intent(this, PrivacyActivity::class.java)
