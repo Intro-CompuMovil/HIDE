@@ -7,7 +7,7 @@
     tools:context=".ProfileActivity">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageViewTituloHide"
         android:layout_width="174dp"
         android:layout_height="41dp"
         app:srcCompat="@drawable/gagalin__1_"
@@ -15,17 +15,17 @@
         tools:layout_editor_absoluteY="6dp"
         tools:ignore="MissingConstraints"/>
 
-    <ImageView
-        android:id="@+id/imageView9"
+    <ImageButton
+        android:id="@+id/bottonRetroceder"
         android:layout_width="32dp"
         android:layout_height="30dp"
-        app:srcCompat="@drawable/_45680"
+        app:srcCompat="?attr/actionModeCloseDrawable"
         tools:layout_editor_absoluteX="5dp"
         tools:layout_editor_absoluteY="6dp"
         tools:ignore="MissingConstraints"/>
 
     <ImageView
-        android:id="@+id/imageView13"
+        android:id="@+id/imageViewPerfil"
         android:layout_width="142dp"
         android:layout_height="27dp"
         app:srcCompat="@drawable/gagalin__3_"
@@ -34,7 +34,7 @@
         tools:ignore="MissingConstraints"/>
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/FotodePerfil"
         android:layout_width="237dp"
         android:layout_height="216dp"
         app:srcCompat="@drawable/profile_png_free_image"
@@ -43,7 +43,7 @@
         tools:ignore="MissingConstraints"/>
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editTextText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -54,7 +54,7 @@
         tools:ignore="MissingConstraints"/>
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/editTextText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -62,6 +62,16 @@
         android:text="User"
         tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="386dp"
+        tools:ignore="MissingConstraints"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="70dp"
+        android:layout_height="39dp"
+        android:text="Settings"
+        android:textSize="8dp"
+        tools:layout_editor_absoluteX="333dp"
+        tools:layout_editor_absoluteY="6dp"
         tools:ignore="MissingConstraints"/>
 
 

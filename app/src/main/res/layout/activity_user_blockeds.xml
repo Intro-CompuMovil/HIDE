@@ -7,20 +7,22 @@
     tools:context=".BlockedUsersActivity">
 
     <ImageView
-        android:id="@+id/imageView33"
+        android:id="@+id/imageViewUsariosblocks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/gagalin__8_"
         tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="51dp" />
+        tools:layout_editor_absoluteY="51dp"
+        tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/imageView34"
+    <ImageButton
+        android:id="@+id/bottonRetroceder"
         android:layout_width="47dp"
         android:layout_height="47dp"
-        app:srcCompat="@drawable/_45680"
+        app:srcCompat="?attr/actionModeCloseDrawable"
         tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="42dp" />
+        tools:layout_editor_absoluteY="42dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView3"
@@ -28,5 +30,6 @@
         android:layout_height="wrap_content"
         android:text="User blocks:"
         tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="114dp" />
+        tools:layout_editor_absoluteY="114dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

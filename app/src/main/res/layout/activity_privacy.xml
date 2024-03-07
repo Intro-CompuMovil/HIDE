@@ -8,7 +8,7 @@
     tools:context=".PrivacyActivity">
 
     <ImageView
-        android:id="@+id/imageView28"
+        android:id="@+id/imageViewPrivacy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/gagalin__7_"
@@ -18,7 +18,7 @@
 
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonUserblocks"
         android:layout_width="375dp"
         android:layout_height="54dp"
         android:background="@color/azul_claro"
@@ -27,29 +27,44 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="141dp" />
 
-    <ImageView
-        android:id="@+id/imageView33"
-        android:layout_width="39dp"
-        android:layout_height="30dp"
-        app:srcCompat="@drawable/_43"
-        tools:layout_editor_absoluteX="345dp"
-        tools:layout_editor_absoluteY="151dp" />
-
-    <ImageView
-        android:id="@+id/imageView30"
-        android:layout_width="40dp"
-        android:layout_height="36dp"
-        app:srcCompat="@android:drawable/ic_secure"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="151dp" />
+    <Button
+        android:id="@+id/buttonHiddenUser"
+        android:layout_width="375dp"
+        android:layout_height="54dp"
+        android:background="@color/azul_claro"
+        android:text="Hidden Users"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="211dp" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/buttoncontactoscel"
+        android:layout_width="375dp"
+        android:layout_height="54dp"
+        android:background="@color/azul_claro"
+        android:text="Find me through my phone number"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="285dp" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="345dp"
+        tools:layout_editor_absoluteY="299dp"
+        tools:ignore="MissingConstraints" />
+
+
+
+    <Button
+        android:id="@+id/buttonSave"
         android:layout_width="199dp"
         android:layout_height="50dp"
         android:text="SAVE"
         tools:layout_editor_absoluteX="106dp"
-        tools:layout_editor_absoluteY="639dp" />
+        tools:layout_editor_absoluteY="639dp"
+        tools:ignore="MissingConstraints"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
