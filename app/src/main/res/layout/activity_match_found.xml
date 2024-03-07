@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MatchFound">
+    tools:context=".MatchFoundActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageButtonAmigos"
         android:layout_width="49dp"
         android:layout_height="52dp"
         app:srcCompat="@drawable/_7115"
@@ -25,7 +25,7 @@
         tools:ignore="MissingConstraints"/>
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imageButtonPerfil"
         android:layout_width="51dp"
         android:layout_height="50dp"
         app:srcCompat="@drawable/profile_png_free_image"
@@ -79,7 +79,7 @@
         tools:ignore="MissingConstraints"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonphoto"
         android:layout_width="214dp"
         android:layout_height="50dp"
         android:text="Found it"

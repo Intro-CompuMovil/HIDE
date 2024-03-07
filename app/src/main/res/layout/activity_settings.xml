@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".settings">
+    tools:context=".SettingsActivity">
 
     <ImageView
         android:id="@+id/imageView16"
@@ -68,7 +68,7 @@
         tools:layout_editor_absoluteY="83dp" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonNotifications"
         android:layout_width="375dp"
         android:layout_height="54dp"
         android:background="@color/azul_claro"
@@ -78,7 +78,7 @@
         tools:layout_editor_absoluteY="174dp" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonPrivacy"
         android:layout_width="375dp"
         android:layout_height="54dp"
         android:background="@color/azul_claro"
@@ -88,7 +88,7 @@
         tools:layout_editor_absoluteY="237dp" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonOthers"
         android:layout_width="375dp"
         android:layout_height="54dp"
         android:background="@color/azul_claro"
@@ -184,7 +184,7 @@
         tools:layout_editor_absoluteY="183dp" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/buttonLogOut"
         android:layout_width="177dp"
         android:layout_height="47dp"
         android:text="Log Out"

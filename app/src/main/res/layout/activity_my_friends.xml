@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".AddFriendActivity">
 
+
     <TextView
         android:id="@+id/titulo"
         android:layout_width="wrap_content"
@@ -21,7 +22,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.035" />
-
 
     <EditText
         android:id="@+id/addorremove"
@@ -61,11 +61,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/myfriends"
+        android:id="@+id/my_friends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/chewy"
-        android:text="My friends"
+        android:text="my friends"
         android:textColor="#020000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -76,15 +76,17 @@
         app:layout_constraintVertical_bias="0.255" />
 
     <ImageView
-        android:id="@+id/imagecontact"
+        android:id="@+id/imageView37"
         android:layout_width="45dp"
         android:layout_height="47dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="220dp"
         android:src="@drawable/profile_png_free_image"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="229dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/namefriend"
+        android:id="@+id/namerecommendedfriend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/chewy"
@@ -93,50 +95,72 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.404"
+        app:layout_constraintHorizontal_bias="0.356"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.324" />
+        app:layout_constraintVertical_bias="0.316" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/userrecomended"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="248dp"
         android:text=" @user"
-        tools:layout_editor_absoluteX="106dp"
-        tools:layout_editor_absoluteY="257dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/deletedrecommended"
         android:layout_width="32dp"
         android:layout_height="31dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="24dp"
         android:src="@android:drawable/ic_menu_close_clear_cancel"
-        tools:layout_editor_absoluteX="363dp"
-        tools:layout_editor_absoluteY="236dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/suggestions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:text="suggestions"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="648dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/friends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="32dp"
         android:text="friends"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="648dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
     <Button
         android:id="@+id/request"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
         android:text="request"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="648dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButtonRegreso2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
