@@ -23,7 +23,6 @@
         android:id="@+id/bottonRetroceder"
         android:layout_width="32dp"
         android:layout_height="30dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.042"
@@ -32,7 +31,6 @@
         app:layout_constraintVertical_bias="0.008"
         app:srcCompat="?attr/actionModeCloseDrawable"
         tools:ignore="MissingConstraints" />
-
 
     <ImageView
         android:id="@+id/imageViewPerfil"
@@ -100,16 +98,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.008"
         tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/buttonSetting"
-        android:layout_width="70dp"
-        android:layout_height="39dp"
-        android:text="Settings"
-        android:textSize="8dp"
-        tools:layout_editor_absoluteX="333dp"
-        tools:layout_editor_absoluteY="6dp"
-        tools:ignore="MissingConstraints"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

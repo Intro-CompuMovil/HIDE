@@ -34,9 +34,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-
         android:id="@+id/imageViewProfile"
-
 
         android:layout_width="51dp"
         android:layout_height="50dp"
@@ -75,7 +73,6 @@
         app:layout_constraintVertical_bias="0.245"
         tools:ignore="MissingConstraints" />
 
-
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -86,7 +83,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".TuActividad" />
-
 
     <ImageView
         android:id="@+id/imageViewclock"

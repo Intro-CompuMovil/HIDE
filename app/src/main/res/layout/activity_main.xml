@@ -82,20 +82,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="forget password"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.619"
-
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/buttonRegister"
         android:layout_width="337dp"
         android:layout_height="57dp"
-
         android:background="@color/azul_claro"
         android:text="register"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -103,7 +100,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.698"
-
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -111,7 +107,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="dont have an account"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.525"
@@ -119,7 +114,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.771"
         tools:ignore="MissingConstraints" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

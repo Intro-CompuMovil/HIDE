@@ -6,7 +6,6 @@ import android.content.pm.PackageManager
 import android.content.Intent
 import android.provider.MediaStore
 import android.graphics.Bitmap
-
 import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -16,7 +15,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-
 import com.example.hide.databinding.ActivityMatchFoundBinding
 
 class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -33,19 +31,6 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val botonAmigos = findViewById<ImageView>(R.id.imageViewContactos)
         val botonPerfil = findViewById<ImageView>(R.id.imageViewProfile)
-
-
-
-        botonPerfil.setOnClickListener{
-            val intent= Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
-        }
-
-        botonAmigos.setOnClickListener{
-            val intent= Intent(this, AddFriendActivity::class.java)
-            startActivity(intent)
-        }
-
 
         binding.buttonphoto.setOnClickListener {
             requestCamera()
