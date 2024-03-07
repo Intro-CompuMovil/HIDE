@@ -1,7 +1,10 @@
 package com.example.hide
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
 import com.example.hide.databinding.ActivityOthersBinding
 
 class OthersActivity : AppCompatActivity() {
@@ -12,5 +15,16 @@ class OthersActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityOthersBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val botonRegresar= findViewById<ImageView>(R.id.bottonRetroceder)
+        val botonEliminar= findViewById<Button>(R.id.buttonDeleteAcount)
+
+        botonRegresar.setOnClickListener {
+            val intent= Intent(this, PrivacyActivity::class.java)
+            startActivity(intent)
+        }
+        botonEliminar.setOnClickListener {
+            val intent= Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

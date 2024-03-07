@@ -7,83 +7,92 @@
     tools:context=".EditProfileActivity">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonCancel"
         android:layout_width="88dp"
         android:layout_height="37dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
         android:text="CANCEL"
         android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.011" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonSave"
         android:layout_width="88dp"
         android:layout_height="37dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
         android:text="SAVE"
         android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/editProfile"
         android:layout_width="177dp"
         android:layout_height="30dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="116dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.062"
         app:srcCompat="@drawable/gagalin__4_" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/FotodePerfil"
         android:layout_width="251dp"
         android:layout_height="250dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="392dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.168"
         app:srcCompat="@drawable/profile_png_free_image" />
 
     <EditText
         android:id="@+id/editTextText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="328dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Full Name"
+        android:hint="Full Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.532" />
 
     <EditText
         android:id="@+id/editTextText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="260dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name of User"
+        android:hint="Name of User"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.622" />
 
     <EditText
         android:id="@+id/editTextText5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="196dp"
         android:ems="10"
         android:inputType="text"
-        android:text="About me"
+        android:hint="About me"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.708" />
 </androidx.constraintlayout.widget.ConstraintLayout>

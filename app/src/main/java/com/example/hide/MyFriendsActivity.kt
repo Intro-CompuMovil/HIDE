@@ -1,6 +1,9 @@
 package com.example.hide
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -18,7 +21,25 @@ class MyFriendsActivity : AppCompatActivity() {
 
         binding = ActivityMyFriendsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val botonRegreso = findViewById<ImageButton>(R.id.bottonRetroceder)
+        val botonSugerencias = findViewById<Button>(R.id.friends)
+        val botonSolicitud = findViewById<Button>(R.id.suggestions)
 
+        botonRegreso.setOnClickListener {
+            val intent= Intent(this, MatchFoundActivity::class.java)
+            startActivity(intent)
+        }
+
+        botonSugerencias.setOnClickListener{
+            val intent= Intent(this, AddFriendActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        botonSolicitud.setOnClickListener{
+            val intent= Intent(this, FriendRequestActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }

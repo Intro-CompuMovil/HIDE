@@ -7,62 +7,97 @@
     tools:context=".ProfileActivity">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageViewTituloHide"
         android:layout_width="174dp"
         android:layout_height="41dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.008"
         app:srcCompat="@drawable/gagalin__1_"
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="6dp"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/imageView9"
+    <ImageButton
+        android:id="@+id/bottonRetroceder"
         android:layout_width="32dp"
         android:layout_height="30dp"
-        app:srcCompat="@drawable/_45680"
-        tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="6dp"
-        tools:ignore="MissingConstraints"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.008"
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/imageView13"
+        android:id="@+id/imageViewPerfil"
         android:layout_width="142dp"
         android:layout_height="27dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096"
         app:srcCompat="@drawable/gagalin__3_"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="75dp"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/FotodePerfil"
         android:layout_width="237dp"
         android:layout_height="216dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.209"
         app:srcCompat="@drawable/profile_png_free_image"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="110dp"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editTextText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
-        android:text="Full name"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="337dp"
-        tools:ignore="MissingConstraints"/>
+        android:hint="Full name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/editTextText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
-        android:text="User"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="386dp"
-        tools:ignore="MissingConstraints"/>
+        android:hint="User"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.575"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/buttonSetting"
+        android:layout_width="70dp"
+        android:layout_height="39dp"
+        android:text="Settings"
+        android:textSize="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.979"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.008"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
