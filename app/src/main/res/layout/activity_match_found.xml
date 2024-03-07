@@ -7,7 +7,9 @@
     tools:context=".MatchFoundActivity">
 
     <ImageView
+
         android:id="@+id/imageViewContactos"
+
         android:layout_width="49dp"
         android:layout_height="52dp"
         app:srcCompat="@drawable/_7115"
@@ -25,7 +27,8 @@
         tools:ignore="MissingConstraints"/>
 
     <ImageView
-        android:id="@+id/imageViewProfile"
+      android:id="@+id/imageViewProfile"
+
         android:layout_width="51dp"
         android:layout_height="50dp"
         app:srcCompat="@drawable/profile_png_free_image"
