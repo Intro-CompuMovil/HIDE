@@ -12,82 +12,118 @@
 
         android:layout_width="49dp"
         android:layout_height="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/_7115"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="2dp"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageViewTituloHide"
         android:layout_width="159dp"
         android:layout_height="43dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/gagalin__1_"
-        tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="11dp"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints" />
 
     <ImageView
-      android:id="@+id/imageViewProfile"
+
+        android:id="@+id/imageViewProfile"
+
 
         android:layout_width="51dp"
         android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.991"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.002"
         app:srcCompat="@drawable/profile_png_free_image"
-        tools:layout_editor_absoluteX="359dp"
-        tools:layout_editor_absoluteY="6dp"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageViewMainMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.134"
         app:srcCompat="@drawable/gagalin__2_"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="104dp"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textViewinformacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your friend is in the range shown on the map"
-        tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="175dp"
-        tools:ignore="MissingConstraints"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.245"
+        tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/imageViewMapa"
-        android:layout_width="317dp"
-        android:layout_height="349dp"
-        app:srcCompat="@drawable/hora_1"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="194dp"
-        tools:ignore="MissingConstraints"/>
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="329dp"
+        android:layout_height="303dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".TuActividad" />
+
 
     <ImageView
         android:id="@+id/imageViewclock"
         android:layout_width="62dp"
         android:layout_height="54dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.769"
         app:srcCompat="@drawable/crono"
-        tools:layout_editor_absoluteX="174dp"
-        tools:layout_editor_absoluteY="525dp"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textViewaviso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="You have 5 minutes to find your friend and take the photo."
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="593dp"
-        tools:ignore="MissingConstraints"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.845"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/buttonphoto"
         android:layout_width="214dp"
         android:layout_height="50dp"
         android:text="Found it"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="645dp"
-        tools:ignore="MissingConstraints"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.955"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,51 +12,79 @@
         android:id="@+id/imageViewSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/gagalin__5_"
-        tools:layout_editor_absoluteX="119dp"
-        tools:layout_editor_absoluteY="16dp"
+
         tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView14"
         android:layout_width="61dp"
         android:layout_height="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.098"
         app:srcCompat="@drawable/profile_png_free_image"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="66dp"
-        tools:ignore="MissingConstraints"/>
 
-    <EditText
+        tools:ignore="MissingConstraints" />
+
+    <TextView
         android:id="@+id/editTextText3"
-        android:layout_width="137dp"
-        android:layout_height="33dp"
+        android:layout_width="122dp"
+        android:layout_height="34dp"
+
+
         android:ems="10"
         android:inputType="text"
         android:text="FULL NAME"
         android:textSize="10dp"
-        tools:layout_editor_absoluteX="77dp"
-        tools:layout_editor_absoluteY="66dp"
-        tools:ignore="MissingConstraints"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.093"
+        tools:ignore="MissingConstraints" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextText4"
-        android:layout_width="127dp"
+        android:layout_width="123dp"
+
         android:layout_height="33dp"
         android:ems="10"
         android:inputType="text"
         android:text="USER"
         android:textSize="10dp"
-        tools:layout_editor_absoluteX="77dp"
-        tools:layout_editor_absoluteY="99dp"
-        tools:ignore="MissingConstraints"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.263"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.143"
+        tools:ignore="MissingConstraints" />
+
 
     <Switch
         android:id="@+id/switch1"
         android:layout_width="168dp"
         android:layout_height="36dp"
-        tools:layout_editor_absoluteX="223dp"
-        tools:layout_editor_absoluteY="83dp"
-        tools:ignore="MissingConstraints"/>
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.119"
+        tools:ignore="MissingConstraints" />
+
 
     <Button
         android:id="@+id/buttonNotifications"
@@ -64,9 +92,12 @@
         android:layout_height="54dp"
         android:background="@color/azul_claro"
         android:text="Notifications"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="174dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.251"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/buttonPrivacy"
@@ -74,9 +105,12 @@
         android:layout_height="54dp"
         android:background="@color/azul_claro"
         android:text="Privacy"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="237dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.348"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/buttonOthers"
@@ -84,9 +118,12 @@
         android:layout_height="54dp"
         android:background="@color/azul_claro"
         android:text="Others"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="301dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.444"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/buttonValue"
@@ -94,9 +131,13 @@
         android:layout_height="54dp"
         android:background="@color/azul_claro"
         android:text="Value Hide"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="498dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.735"
+        tools:ignore="MissingConstraints" />
+
 
     <Button
         android:id="@+id/buttonHelp"
@@ -104,9 +145,12 @@
         android:layout_height="54dp"
         android:background="@color/azul_claro"
         android:text="Help"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="561dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.83"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/buttonshare"
@@ -114,10 +158,13 @@
         android:layout_height="54dp"
         android:background="@color/azul_claro"
         android:text="Share Hide"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="437dp" />
 
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.542"
+        tools:ignore="MissingConstraints" />
 
 
     <Button
@@ -125,11 +172,13 @@
         android:layout_width="177dp"
         android:layout_height="47dp"
         android:text="Log Out"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="656dp"
-        tools:ignore="MissingConstraints"/>
 
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.938"
+        tools:ignore="MissingConstraints" />
 
 
 
