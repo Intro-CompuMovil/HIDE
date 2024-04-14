@@ -5,11 +5,12 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <application
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+    <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -18,7 +19,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HIDE"
-        tools:targetApi="31"   >
+        tools:targetApi="31">
+        <activity
+            android:name=".AdminActivity"
+            android:exported="false" />
         <activity
             android:name=".AddFriendActivity"
             android:exported="false" />
@@ -68,13 +72,10 @@
 
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts"
-           />
+            android:resource="@array/preloaded_fonts" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="TU_CLAVE_API"/>
-
-
+            android:value="TU_CLAVE_API" />
     </application>
 
 </manifest>
