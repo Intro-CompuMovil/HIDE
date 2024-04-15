@@ -1,6 +1,5 @@
 package com.example.hide
 
-
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -10,7 +9,6 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-
 import com.example.hide.databinding.ActivityEditprofileBinding
 import android.graphics.Bitmap
 
@@ -26,25 +24,19 @@ class EditProfileActivity : AppCompatActivity() {
         binding = ActivityEditprofileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         setupClickListeners()
     }
 
     private fun setupClickListeners() {
-
         val botonCancelar = findViewById<Button>(R.id.buttonCancel)
         val botonGuardar = findViewById<Button>(R.id.buttonSave)
 
         botonCancelar.setOnClickListener {
-
             val intent = Intent(this, ProfileActivity::class.java)
-
-
             startActivity(intent)
         }
 
         botonGuardar.setOnClickListener {
-
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
@@ -87,6 +79,5 @@ class EditProfileActivity : AppCompatActivity() {
             val imageBitmap = data?.extras?.get("data") as? Bitmap
             binding.FotodePerfil.setImageBitmap(imageBitmap)
         }
-
     }
 }

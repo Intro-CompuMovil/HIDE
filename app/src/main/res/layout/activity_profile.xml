@@ -23,7 +23,6 @@
         android:id="@+id/bottonRetroceder"
         android:layout_width="32dp"
         android:layout_height="30dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.042"
@@ -32,7 +31,6 @@
         app:layout_constraintVertical_bias="0.008"
         app:srcCompat="?attr/actionModeCloseDrawable"
         tools:ignore="MissingConstraints" />
-
 
     <ImageView
         android:id="@+id/imageViewPerfil"

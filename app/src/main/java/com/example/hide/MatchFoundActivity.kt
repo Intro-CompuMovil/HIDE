@@ -7,7 +7,9 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.provider.MediaStore
+
 import android.widget.Button
+
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
@@ -42,6 +44,7 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val botonAmigos = findViewById<ImageView>(R.id.imageViewContactos)
         val botonPerfil = findViewById<ImageView>(R.id.imageViewProfile)
+
         val botonMatch = findViewById<Button>(R.id.findmatch)
         textViewCountdown = findViewById<TextView>(R.id.countdown_timer)
         val hideOrEyeImageView = findViewById<ImageView>(R.id.HideorEye)
@@ -70,6 +73,7 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
             val intent = Intent(this, FindMatchActivity::class.java)
             startForResult.launch(intent)
         }
+
 
 
 
