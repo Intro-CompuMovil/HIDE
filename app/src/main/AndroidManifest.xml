@@ -9,8 +9,9 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
-
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
 
     <application
         android:allowBackup="true"
@@ -22,6 +23,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HIDE"
         tools:targetApi="31">
+        <activity
+            android:name=".LoseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WinnerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FindMatchActivity"
+            android:exported="false" />
         <activity
             android:name=".AgregarEventoActivity"
             android:exported="false" />

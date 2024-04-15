@@ -101,15 +101,5 @@
         app:layout_constraintVertical_bias="0.008"
         tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/buttonSetting"
-        android:layout_width="70dp"
-        android:layout_height="39dp"
-        android:text="Settings"
-        android:textSize="8dp"
-        tools:layout_editor_absoluteX="333dp"
-        tools:layout_editor_absoluteY="6dp"
-        tools:ignore="MissingConstraints"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

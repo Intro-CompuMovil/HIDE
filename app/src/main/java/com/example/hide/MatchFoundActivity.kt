@@ -1,12 +1,17 @@
 package com.example.hide
 
+import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.provider.MediaStore
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -18,13 +23,17 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
+
 class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMatchFoundBinding
     private val REQUEST_IMAGE_CAPTURE = 1
     private val REQUEST_CAMERA_PERMISSION = 101
     private val REQUEST_LOCATION_PERMISSION = 102
     private lateinit var mMap: GoogleMap
-    private lateinit var textViewTimer: TextView
+    private lateinit var countdownTimer: CountDownTimer
+    private lateinit var textViewCountdown: TextView
+    private lateinit var startForResult: ActivityResultLauncher<Intent>
+    private lateinit var launchCamera: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,18 +42,34 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val botonAmigos = findViewById<ImageView>(R.id.imageViewContactos)
         val botonPerfil = findViewById<ImageView>(R.id.imageViewProfile)
-
+        val botonMatch = findViewById<Button>(R.id.findmatch)
+        textViewCountdown = findViewById<TextView>(R.id.countdown_timer)
 
 
         botonPerfil.setOnClickListener{
             val intent= Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
-
         botonAmigos.setOnClickListener{
             val intent= Intent(this, AddFriendActivity::class.java)
             startActivity(intent)
         }
+
+
+        startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                // Aquí inicia el temporizador cuando el usuario regresa
+                startCountdown()
+            } else {
+
+            }
+        }
+        botonMatch.setOnClickListener {
+            val intent = Intent(this, FindMatchActivity::class.java)
+            startForResult.launch(intent)
+        }
+
+
 
 
         binding.buttonphoto.setOnClickListener {
@@ -63,19 +88,28 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
         // Initialize map
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+
+        launchCamera = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                // La foto fue tomada exitosamente, navegar a WinnerActivity
+                val intent = Intent(this, WinnerActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     private fun requestCamera() {
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), REQUEST_CAMERA_PERMISSION)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), REQUEST_CAMERA_PERMISSION)
         } else {
             dispatchTakePictureIntent()
         }
     }
 
     private fun requestLocationPermission() {
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_LOCATION_PERMISSION)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_LOCATION_PERMISSION)
         } else {
             mMap.isMyLocationEnabled = true
         }
@@ -93,7 +127,7 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
             }
             REQUEST_LOCATION_PERMISSION -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                         mMap.isMyLocationEnabled = true
                     }
                 } else {
@@ -104,10 +138,9 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun dispatchTakePictureIntent() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            takePictureIntent.resolveActivity(packageManager)?.also {
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-            }
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        takePictureIntent.resolveActivity(packageManager)?.let {
+            launchCamera.launch(takePictureIntent)
         }
     }
 
@@ -121,6 +154,23 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Enable MyLocation Layer of Google Map
         requestLocationPermission()
+    }
+
+    private fun startCountdown() {
+        val totalTime = 5 * 60 * 1000
+        countdownTimer = object : CountDownTimer(totalTime.toLong(), 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val minutes = (millisUntilFinished / 1000) / 60
+                val seconds = (millisUntilFinished / 1000) % 60
+                textViewCountdown.text = String.format("%02d:%02d", minutes, seconds)
+            }
+
+            override fun onFinish() {
+                textViewCountdown.text = "00:00"
+                val intent = Intent(this@MatchFoundActivity, LoseActivity::class.java)
+                startActivity(intent)
+            }
+        }.start()
     }
 }
 
