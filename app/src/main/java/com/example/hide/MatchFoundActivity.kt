@@ -7,9 +7,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.provider.MediaStore
-
 import android.widget.Button
-
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher

@@ -7,17 +7,15 @@
     tools:context=".MatchFoundActivity">
 
     <ImageView
-
         android:id="@+id/imageViewContactos"
-
         android:layout_width="49dp"
         android:layout_height="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.005"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.002"
         app:srcCompat="@drawable/_7115"
         tools:ignore="MissingConstraints" />
 

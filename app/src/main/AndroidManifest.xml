@@ -24,6 +24,9 @@
         android:theme="@style/Theme.HIDE"
         tools:targetApi="31">
         <activity
+            android:name=".FriendProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoseActivity"
             android:exported="false" />
         <activity

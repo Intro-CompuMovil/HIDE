@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -24,9 +25,15 @@ class AddFriendActivity : AppCompatActivity() {
         val botonSolicitud = findViewById<Button>(R.id.request)
         val botonAdd = findViewById<Button>(R.id.add)
         val botonDelete =findViewById<Button>(R.id.delete)
+        val BotonMirarAmigo  =findViewById<ImageView>(R.id.imageView37)
 
         botonRegreso.setOnClickListener {
             val intent= Intent(this, MatchFoundActivity::class.java)
+            startActivity(intent)
+        }
+
+        BotonMirarAmigo.setOnClickListener {
+            val intent= Intent(this, FriendProfileActivity::class.java)
             startActivity(intent)
         }
 
