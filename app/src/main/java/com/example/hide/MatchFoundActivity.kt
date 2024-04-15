@@ -1,15 +1,16 @@
 package com.example.hide
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.content.pm.PackageManager
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Bundle
+import android.os.CountDownTimer
 import android.provider.MediaStore
-import android.graphics.Bitmap
-
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.hide.databinding.ActivityMatchFoundBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -17,14 +18,13 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-import com.example.hide.databinding.ActivityMatchFoundBinding
-
 class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMatchFoundBinding
     private val REQUEST_IMAGE_CAPTURE = 1
     private val REQUEST_CAMERA_PERMISSION = 101
     private val REQUEST_LOCATION_PERMISSION = 102
     private lateinit var mMap: GoogleMap
+    private lateinit var textViewTimer: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -123,3 +123,4 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
         requestLocationPermission()
     }
 }
+
