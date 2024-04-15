@@ -22,20 +22,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/imageViewTituloHide"
-        android:layout_width="159dp"
-        android:layout_height="43dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
-        app:srcCompat="@drawable/gagalin__1_"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
         android:id="@+id/imageViewProfile"
-
         android:layout_width="51dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,6 +34,7 @@
         app:srcCompat="@drawable/profile_png_free_image"
         tools:ignore="MissingConstraints" />
 
+
     <ImageView
         android:id="@+id/imageViewMainMenu"
         android:layout_width="wrap_content"
@@ -56,7 +44,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.134"
+        app:layout_constraintVertical_bias="0.075"
         app:srcCompat="@drawable/gagalin__2_"
         tools:ignore="MissingConstraints" />
 
@@ -70,7 +58,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.245"
+        app:layout_constraintVertical_bias="0.185"
         tools:ignore="MissingConstraints" />
 
     <fragment
@@ -82,19 +70,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.39"
         tools:context=".TuActividad" />
 
-    <ImageView
-        android:id="@+id/imageViewclock"
-        android:layout_width="62dp"
-        android:layout_height="54dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <TextView
+        android:id="@+id/countdown_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:text="00:00"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewaviso"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.769"
-        app:srcCompat="@drawable/crono"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -121,5 +112,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.955"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/findmatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="findmatch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.749" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,8 +16,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.09"
-        app:srcCompat="@drawable/gagalin__8_"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/gagalin__8_" />
+
+
 
     <ImageButton
         android:id="@+id/bottonRetroceder"
@@ -29,8 +30,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023"
-        app:srcCompat="?attr/actionModeCloseDrawable"
-        tools:ignore="MissingConstraints" />
+
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
+
 
     <TextView
         android:id="@+id/textView3"

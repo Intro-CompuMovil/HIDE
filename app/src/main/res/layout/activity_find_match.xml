@@ -5,71 +5,75 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminActivity">
+    tools:context=".FindMatchActivity">
 
     <Button
-        android:id="@+id/buttonHiddenUser"
-        android:layout_width="295dp"
-        android:layout_height="54dp"
-        android:background="@color/azul_claro"
-        android:text="Administrar Lugares"
+        android:id="@+id/Rechazar"
+        android:layout_width="177dp"
+        android:layout_height="47dp"
+        android:text="Rechazar"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.893"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.645"
+        app:layout_constraintVertical_bias="0.609"
         tools:ignore="MissingConstraints" />
 
-    <ImageButton
-        android:id="@+id/bottonRetroceder"
-        android:layout_width="32dp"
-        android:layout_height="30dp"
+    <Button
+        android:id="@+id/Aceptar"
+        android:layout_width="177dp"
+        android:layout_height="47dp"
+        android:text="Aceptar"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.008"
-        app:srcCompat="?attr/actionModeCloseDrawable"
+        app:layout_constraintVertical_bias="0.609"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="155dp"
+        android:layout_height="136dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.373"
+        app:srcCompat="@drawable/profile_png_free_image"
+
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textViewadmin"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Admin"
-
+        android:text="el @ usuario te desafia a un duelo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.147"
-
+        app:layout_constraintVertical_bias="0.178"
+        android:textSize="20sp"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/fotodePerfiladmin"
-        android:layout_width="237dp"
-        android:layout_height="216dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.269"
-        app:srcCompat="@drawable/profile_png_free_image"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/imageViewPerfiladmin"
-        android:layout_width="142dp"
-        android:layout_height="27dp"
+    <TextView
+        android:id="@+id/titulo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="FIND MATCH"
+        android:textColor="#020000"
+        android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096"
-        app:srcCompat="@drawable/gagalin__3_"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.035" />
 </androidx.constraintlayout.widget.ConstraintLayout>
