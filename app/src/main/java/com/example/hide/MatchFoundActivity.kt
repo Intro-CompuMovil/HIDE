@@ -7,9 +7,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.provider.MediaStore
-
 import android.widget.Button
-
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
@@ -47,7 +45,9 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val botonMatch = findViewById<Button>(R.id.findmatch)
         textViewCountdown = findViewById<TextView>(R.id.countdown_timer)
+        val hideOrEyeImageView = findViewById<ImageView>(R.id.HideorEye)
 
+        var isShowingHide = true
 
         botonPerfil.setOnClickListener{
             val intent= Intent(this, ProfileActivity::class.java)
@@ -99,6 +99,18 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
                 // La foto fue tomada exitosamente, navegar a WinnerActivity
                 val intent = Intent(this, WinnerActivity::class.java)
                 startActivity(intent)
+            }
+        }
+
+        hideOrEyeImageView.setOnClickListener {
+            if (isShowingHide) {
+                // Si actualmente muestra 'hide', cambia a 'eye'
+                hideOrEyeImageView.setImageResource(R.drawable.eye)
+                isShowingHide = false
+            } else {
+                // Si actualmente muestra 'eye', cambia a 'hide'
+                hideOrEyeImageView.setImageResource(R.drawable.hide)
+                isShowingHide = true
             }
         }
     }

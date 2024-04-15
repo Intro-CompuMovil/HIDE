@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         val botonLogin = findViewById<Button>(R.id.buttonLogin)
         val botonRegister = findViewById<Button>(R.id.buttonRegister)
+        val botonAdminLogin = findViewById<Button>(R.id.buttonAdminLogin)
 
         botonLogin.setOnClickListener{
             val intent= Intent(this, MatchFoundActivity::class.java)
@@ -25,6 +26,11 @@ class MainActivity : AppCompatActivity() {
         botonRegister.setOnClickListener{
         val intent= Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+        }
+
+        botonAdminLogin.setOnClickListener{
+                val intent= Intent(this, AdminActivity::class.java)
+                startActivity(intent)
         }
 
     }
