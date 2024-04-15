@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,6 +18,23 @@ class AgregarEventoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_agregar_evento)
+
+
+        val botonRetroceder =findViewById<ImageButton>(R.id.bottonRetroceder)
+        val AgregarSitio =findViewById<Button>(R.id.buttonAgregarSitio)
+
+
+        botonRetroceder.setOnClickListener{
+            val intent= Intent(this, LugaresActivity::class.java)
+            startActivity(intent)
+        }
+
+        AgregarSitio.setOnClickListener{
+            val intent= Intent(this, LugaresActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
         // Aplicar insets para el sistema de barras
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

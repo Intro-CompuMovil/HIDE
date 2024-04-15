@@ -8,7 +8,7 @@
     tools:context=".AdminActivity">
 
     <Button
-        android:id="@+id/buttonHiddenUser"
+        android:id="@+id/BotonAdministrarLugares"
         android:layout_width="295dp"
         android:layout_height="54dp"
         android:background="@color/azul_claro"
