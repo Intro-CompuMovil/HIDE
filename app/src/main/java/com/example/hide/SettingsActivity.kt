@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import com.example.hide.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {
@@ -18,6 +19,7 @@ class SettingsActivity : AppCompatActivity() {
         val botonPrivacy = findViewById<Button>(R.id.buttonPrivacy)
         val botonOtros = findViewById<Button>(R.id.buttonOthers)
         val botonLogOut = findViewById<Button>(R.id.buttonLogOut)
+        val botonProfile = findViewById<ImageButton>(R.id.bottonRetrocederProfile)
 
         botonNotificacion.setOnClickListener {
             val intent= Intent(this, NotificationsActivity::class.java)
@@ -33,6 +35,11 @@ class SettingsActivity : AppCompatActivity() {
         }
         botonLogOut.setOnClickListener {
             val intent= Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        botonProfile.setOnClickListener {
+            val intent= Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
 
