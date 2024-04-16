@@ -26,7 +26,6 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMatchFoundBinding
-    private val REQUEST_IMAGE_CAPTURE = 1
     private val REQUEST_CAMERA_PERMISSION = 101
     private val REQUEST_LOCATION_PERMISSION = 102
     private lateinit var mMap: GoogleMap
@@ -40,11 +39,13 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMatchFoundBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val botonAmigos = findViewById<ImageView>(R.id.imageViewContactos)
+        val imageContactos = findViewById<ImageView>(R.id.imageContactos)
+
+
         val botonPerfil = findViewById<ImageView>(R.id.imageViewProfile)
 
         val botonMatch = findViewById<Button>(R.id.findmatch)
-        textViewCountdown = findViewById<TextView>(R.id.countdown_timer)
+        textViewCountdown = findViewById(R.id.countdown_timer)
         val hideOrEyeImageView = findViewById<ImageView>(R.id.HideorEye)
 
         var isShowingHide = true
@@ -53,18 +54,17 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
             val intent= Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
-        botonAmigos.setOnClickListener{
-            val intent= Intent(this, AddFriendActivity::class.java)
+        binding.imageContactos.setOnClickListener {
+            val intent = Intent(this, AddFriendActivity::class.java)
             startActivity(intent)
         }
+
 
 
         startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 // Aquí inicia el temporizador cuando el usuario regresa
                 startCountdown()
-            } else {
-
             }
         }
         botonMatch.setOnClickListener {
@@ -84,7 +84,7 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
             startActivity(intent)
         }
 
-        binding.imageViewContactos.setOnClickListener {
+        binding.imageContactos.setOnClickListener {
             val intent = Intent(this, AddFriendActivity::class.java)
             startActivity(intent)
         }
@@ -103,14 +103,14 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
         hideOrEyeImageView.setOnClickListener {
-            if (isShowingHide) {
+            isShowingHide = if (isShowingHide) {
                 // Si actualmente muestra 'hide', cambia a 'eye'
                 hideOrEyeImageView.setImageResource(R.drawable.eye)
-                isShowingHide = false
+                false
             } else {
                 // Si actualmente muestra 'eye', cambia a 'hide'
                 hideOrEyeImageView.setImageResource(R.drawable.hide)
-                isShowingHide = true
+                true
             }
         }
     }

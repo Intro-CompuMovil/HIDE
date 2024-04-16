@@ -24,6 +24,13 @@
         android:theme="@style/Theme.HIDE"
         tools:targetApi="31">
         <activity
+            android:name=".MyFriendsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.HIDE" />
+        <activity
+            android:name=".AddFriendActivity"
+            android:exported="false" />
+        <activity
             android:name=".FriendProfileActivity"
             android:exported="false" />
         <activity
@@ -45,18 +52,11 @@
             android:name=".AdminActivity"
             android:exported="false" />
         <activity
-            android:name=".AddFriendActivity"
-            android:exported="false" />
-        <activity
             android:name=".BlockedUsersActivity"
             android:exported="false" />
         <activity
             android:name=".EditProfileActivity"
             android:exported="false" />
-        <activity
-            android:name=".MyFriendsActivity"
-            android:exported="false"
-            android:theme="@style/Theme.HIDE" />
         <activity
             android:name=".FriendRequestActivity"
             android:exported="false" />

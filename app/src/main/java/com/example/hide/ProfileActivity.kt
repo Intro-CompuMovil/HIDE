@@ -20,7 +20,7 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val botonEditPerfil = findViewById<ImageView>(R.id.FotodePerfil)
-        val botonConfig = findViewById<Button>(R.id.buttonSetting) //falta que juanjo configure la pantalla
+        val botonConfig = findViewById<Button>(R.id.buttonSetting)
         val botonRegreso = findViewById<ImageButton>(R.id.bottonRetroceder)
 
         botonRegreso.setOnClickListener {
