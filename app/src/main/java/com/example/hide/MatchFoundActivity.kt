@@ -4,9 +4,11 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -16,8 +18,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.hide.databinding.ActivityMatchFoundBinding
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapFragment
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
@@ -28,18 +33,23 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMatchFoundBinding
     private val REQUEST_CAMERA_PERMISSION = 101
     private val REQUEST_LOCATION_PERMISSION = 102
-    private lateinit var mMap: GoogleMap
+    private var mGoogleMap:GoogleMap? = null
     private lateinit var countdownTimer: CountDownTimer
     private lateinit var textViewCountdown: TextView
     private lateinit var startForResult: ActivityResultLauncher<Intent>
     private lateinit var launchCamera: ActivityResultLauncher<Intent>
-
+    private lateinit var locationProvider: FusedLocationProviderClient
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMatchFoundBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        locationProvider = LocationServices.getFusedLocationProviderClient(this)
+
         val imageContactos = findViewById<ImageView>(R.id.imageContactos)
+
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
 
 
         val botonPerfil = findViewById<ImageView>(R.id.imageViewProfile)
@@ -89,9 +99,8 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
             startActivity(intent)
         }
 
-        // Initialize map
-        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+
+
 
 
         launchCamera = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -127,31 +136,32 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_LOCATION_PERMISSION)
         } else {
-            mMap.isMyLocationEnabled = true
+            enableMyLocation()
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            REQUEST_CAMERA_PERMISSION -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    dispatchTakePictureIntent()
-                } else {
-                    // Handle the case where the user denies the camera permission.
+
+    private fun enableMyLocation() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            mGoogleMap?.isMyLocationEnabled = true
+            mGoogleMap?.uiSettings?.isMyLocationButtonEnabled = true
+
+            // Solicitar la última ubicación conocida del proveedor de ubicación
+            locationProvider.lastLocation.addOnSuccessListener { location: Location? ->
+                // Verifica si la ubicación no es nula y actualiza la cámara del mapa
+                location?.let {
+                    val userLocation = LatLng(it.latitude, it.longitude)
+                    mGoogleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15.0f))
                 }
-            }
-            REQUEST_LOCATION_PERMISSION -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                        mMap.isMyLocationEnabled = true
-                    }
-                } else {
-                    // Handle the case where the user denies the location permission.
-                }
+            }.addOnFailureListener {
+                // Manejar la situación donde la obtención de la ubicación falla
+                Log.d("MapsActivity", "Error al obtener la ubicación actual")
             }
         }
     }
+
+
+
 
     private fun dispatchTakePictureIntent() {
         val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -160,17 +170,17 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-
-        // Example location - Sydney, Australia
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-
-        // Enable MyLocation Layer of Google Map
-        requestLocationPermission()
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_LOCATION_PERMISSION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                enableMyLocation()
+            } else {
+                // Manejar el caso de que el usuario niegue el permiso
+            }
+        }
     }
+
 
     private fun startCountdown() {
         val totalTime = 5 * 60 * 1000
@@ -187,6 +197,21 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
                 startActivity(intent)
             }
         }.start()
+    }
+
+    override fun onMapReady(googleMap: GoogleMap) {
+        mGoogleMap = googleMap
+
+        val bogota = LatLng(4.7110, -74.0721)
+
+        mGoogleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(bogota, 12.0f))
+
+        // Opcional: Agregar un marcador en Bogotá
+        mGoogleMap?.addMarker(MarkerOptions().position(bogota).title("Marcador en Bogotá"))
+
+        // Habilitar la capa de ubicación si se tienen los permisos necesarios
+        enableMyLocation()
+
     }
 }
 
