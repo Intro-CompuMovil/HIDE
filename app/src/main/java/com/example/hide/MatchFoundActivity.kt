@@ -4,10 +4,12 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.provider.MediaStore
+import android.telecom.Call
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
@@ -18,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.hide.databinding.ActivityMatchFoundBinding
+import com.google.android.gms.common.api.Response
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -26,7 +29,11 @@ import com.google.android.gms.maps.MapFragment
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.Polyline
+import com.google.android.gms.maps.model.PolylineOptions
+import okhttp3.Route
 
 
 class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -39,6 +46,11 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var startForResult: ActivityResultLauncher<Intent>
     private lateinit var launchCamera: ActivityResultLauncher<Intent>
     private lateinit var locationProvider: FusedLocationProviderClient
+    private var polyline: Polyline? = null
+
+
+    private var userLocationMarker: Marker? = null
+    private var additionalMarker: Marker? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMatchFoundBinding.inflate(layoutInflater)
@@ -146,19 +158,24 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
             mGoogleMap?.isMyLocationEnabled = true
             mGoogleMap?.uiSettings?.isMyLocationButtonEnabled = true
 
-            // Solicitar la última ubicación conocida del proveedor de ubicación
             locationProvider.lastLocation.addOnSuccessListener { location: Location? ->
-                // Verifica si la ubicación no es nula y actualiza la cámara del mapa
                 location?.let {
                     val userLocation = LatLng(it.latitude, it.longitude)
-                    mGoogleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15.0f))
+                    mGoogleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))  // Establece el nivel de zoom a 15
+                    if (userLocationMarker == null) {
+                        userLocationMarker = mGoogleMap?.addMarker(MarkerOptions().position(userLocation).title("Tu ubicación actual"))
+                    } else {
+                        userLocationMarker?.position = userLocation
+                    }
                 }
             }.addOnFailureListener {
-                // Manejar la situación donde la obtención de la ubicación falla
                 Log.d("MapsActivity", "Error al obtener la ubicación actual")
             }
         }
     }
+
+
+
 
 
 
@@ -202,16 +219,19 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mGoogleMap = googleMap
 
-        val bogota = LatLng(4.7110, -74.0721)
-
-        mGoogleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(bogota, 12.0f))
-
-        // Opcional: Agregar un marcador en Bogotá
-        mGoogleMap?.addMarker(MarkerOptions().position(bogota).title("Marcador en Bogotá"))
-
         // Habilitar la capa de ubicación si se tienen los permisos necesarios
         enableMyLocation()
 
+
+
     }
+
+
+
+
+
+
+
+
 }
 
