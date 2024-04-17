@@ -11,7 +11,9 @@ import android.os.CountDownTimer
 import android.provider.MediaStore
 import android.telecom.Call
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
@@ -28,6 +30,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapFragment
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
@@ -46,11 +49,9 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var startForResult: ActivityResultLauncher<Intent>
     private lateinit var launchCamera: ActivityResultLauncher<Intent>
     private lateinit var locationProvider: FusedLocationProviderClient
-    private var polyline: Polyline? = null
 
 
     private var userLocationMarker: Marker? = null
-    private var additionalMarker: Marker? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMatchFoundBinding.inflate(layoutInflater)
@@ -65,8 +66,19 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
         val botonPerfil = findViewById<ImageView>(R.id.imageViewProfile)
-
         val botonMatch = findViewById<Button>(R.id.findmatch)
+
+        botonMatch.setOnClickListener {
+            val targetLocation = LatLng(4.628528, -74.067283) // Convertido a formato decimal
+            drawCircle(targetLocation)
+
+            val intent = Intent(this, FindMatchActivity::class.java)
+            startForResult.launch(intent)
+        }
+
+
+
+
         textViewCountdown = findViewById(R.id.countdown_timer)
         val hideOrEyeImageView = findViewById<ImageView>(R.id.HideorEye)
 
@@ -89,10 +101,7 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
                 startCountdown()
             }
         }
-        botonMatch.setOnClickListener {
-            val intent = Intent(this, FindMatchActivity::class.java)
-            startForResult.launch(intent)
-        }
+
 
 
 
@@ -125,12 +134,16 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
 
         hideOrEyeImageView.setOnClickListener {
             isShowingHide = if (isShowingHide) {
-                // Si actualmente muestra 'hide', cambia a 'eye'
+                // Cambiar a 'eye', activar el mapa
                 hideOrEyeImageView.setImageResource(R.drawable.eye)
+                mGoogleMap?.uiSettings?.setAllGesturesEnabled(true)  // Habilitar gestos
+                findViewById<FrameLayout>(R.id.map).visibility = View.VISIBLE  // Mostrar el contenedor del mapa
                 false
             } else {
-                // Si actualmente muestra 'eye', cambia a 'hide'
+                // Cambiar a 'hide', desactivar el mapa
                 hideOrEyeImageView.setImageResource(R.drawable.hide)
+                mGoogleMap?.uiSettings?.setAllGesturesEnabled(false)  // Deshabilitar gestos
+                findViewById<FrameLayout>(R.id.map).visibility = View.GONE  // Ocultar el contenedor del mapa
                 true
             }
         }
@@ -224,6 +237,16 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
 
+    }
+
+    fun drawCircle(location: LatLng) {
+        val circleOptions = CircleOptions()
+            .center(location)
+            .radius(100.0) // Radio en metros
+            .strokeWidth(3f)
+            .strokeColor(Color.BLUE) // Color del borde del círculo
+            .fillColor(0x220000FF) // Color de relleno del círculo con transparencia
+        mGoogleMap?.addCircle(circleOptions)
     }
 
 
