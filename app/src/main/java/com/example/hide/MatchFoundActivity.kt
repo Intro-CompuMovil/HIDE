@@ -1,13 +1,16 @@
 package com.example.hide
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.StrictMode
 import android.provider.MediaStore
 import android.telecom.Call
 import android.util.Log
@@ -16,6 +19,7 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -35,9 +39,12 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.Polyline
-import com.google.android.gms.maps.model.PolylineOptions
 import okhttp3.Route
-
+import com.google.android.gms.maps.model.PolylineOptions
+import org.osmdroid.bonuspack.routing.MapQuestRoadManager
+import org.osmdroid.bonuspack.routing.RoadManager
+import org.osmdroid.bonuspack.routing.OSRMRoadManager
+import org.osmdroid.util.GeoPoint
 
 class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMatchFoundBinding
@@ -50,8 +57,10 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var launchCamera: ActivityResultLauncher<Intent>
     private lateinit var locationProvider: FusedLocationProviderClient
 
-
     private var userLocationMarker: Marker? = null
+
+
+    @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMatchFoundBinding.inflate(layoutInflater)
@@ -61,6 +70,10 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val imageContactos = findViewById<ImageView>(R.id.imageContactos)
 
+
+        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+        StrictMode.setThreadPolicy(policy)
+
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
@@ -69,13 +82,31 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
         val botonMatch = findViewById<Button>(R.id.findmatch)
 
         botonMatch.setOnClickListener {
-            val targetLocation = LatLng(4.628528, -74.067283) // Convertido a formato decimal
-            drawCircle(targetLocation)
-
             val intent = Intent(this, FindMatchActivity::class.java)
             startForResult.launch(intent)
-        }
 
+
+         }
+
+        startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                // Aquí inicia el temporizador cuando el usuario regresa
+                if (requestLocationPermission()){
+                    startCountdown()
+                    locationProvider.lastLocation.addOnSuccessListener { location: Location? ->
+                        location?.let {
+                            val userLocation = LatLng(it.latitude, it.longitude)
+                            val DISTANCE = 0.0009 // valor quemado de lo que son aproximadamente 50 metros
+                            val PERSON_POSITION = LatLng(userLocation.latitude-DISTANCE,  userLocation.longitude)
+                            val quemado = LatLng( 4.62714,  -74.06258)
+                            val targetLocation = calculateMidPoint(userLocation, PERSON_POSITION)
+
+                            drawCircle(targetLocation)
+                            drawRouteFromCurrentLocationToCircleCenter(userLocation, targetLocation)
+                        }
+                    }}
+            }
+        }
 
 
 
@@ -95,12 +126,6 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
 
-        startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                // Aquí inicia el temporizador cuando el usuario regresa
-                startCountdown()
-            }
-        }
 
 
 
@@ -147,6 +172,8 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
                 true
             }
         }
+
+        requestLocationPermission()
     }
 
     private fun requestCamera() {
@@ -157,11 +184,13 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    private fun requestLocationPermission() {
+    private fun requestLocationPermission(): Boolean {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_LOCATION_PERMISSION)
+        return false
         } else {
             enableMyLocation()
+            return true
         }
     }
 
@@ -206,7 +235,22 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 enableMyLocation()
             } else {
-                // Manejar el caso de que el usuario niegue el permiso
+                // Si el permiso fue denegado, muestra un diálogo explicando por qué necesitas el permiso
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    AlertDialog.Builder(this)
+                        .setTitle("Permiso de ubicación necesario")
+                        .setMessage("Esta aplicación necesita el permiso de ubicación para mostrar tu ubicación en el mapa.")
+                        .setPositiveButton("Aceptar") { _, _ ->
+                            // Solicita el permiso de nuevo
+                            requestLocationPermission()
+                        }
+                        .setNegativeButton("Cancelar", null)
+                        .create()
+                        .show()
+                } else {
+                    // El usuario ha marcado la opción "No preguntar de nuevo", no puedes solicitar el permiso de nuevo
+                    Toast.makeText(this, "Permiso de ubicación necesario para mostrar tu ubicación en el mapa.", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
@@ -245,12 +289,38 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
             .strokeColor(Color.BLUE) // Color del borde del círculo
             .fillColor(0x220000FF) // Color de relleno del círculo con transparencia
         mGoogleMap?.addCircle(circleOptions)
+
+
     }
 
+        fun calculateMidPoint(location1: LatLng, location2: LatLng): LatLng {
+            val midLatitude = (location1.latitude + location2.latitude) / 2
+            val midLongitude = (location1.longitude + location2.longitude) / 2
+            return LatLng(midLatitude, midLongitude)
+        }
 
+    fun drawRouteFromCurrentLocationToCircleCenter(currentLocation: LatLng, circleCenter: LatLng) {
+        // Crea un RoadManager
+        val roadManager: RoadManager = OSRMRoadManager(this, "ANDROID")
+      //  roadManager.addRequestOption("vehicle=car") // Establece el tipo de ruta a "caminar"
 
+        // Define las coordenadas de inicio y fin de la ruta
+        val start = GeoPoint(currentLocation.latitude, currentLocation.longitude)
+        val end = GeoPoint(circleCenter.latitude, circleCenter.longitude)
 
+        // Solicita la ruta a OpenStreetMap
+        val waypoints = ArrayList<GeoPoint>()
+        waypoints.add(start)
+        waypoints.add(end)
+        val road = roadManager.getRoad(waypoints)
 
+        // Convierte la ruta a una lista de LatLng
+        val latLngRoute = road.mRouteHigh.map { LatLng(it.latitude, it.longitude) }
+
+        // Dibuja la ruta en el mapa de Google Maps
+        val polylineOptions = PolylineOptions().addAll(latLngRoute).color(Color.RED).width(5f)
+        mGoogleMap!!.addPolyline(polylineOptions)
+    }
 
 
 
