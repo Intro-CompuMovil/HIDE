@@ -136,14 +136,14 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
             isShowingHide = if (isShowingHide) {
                 // Cambiar a 'eye', activar el mapa
                 hideOrEyeImageView.setImageResource(R.drawable.eye)
-                mGoogleMap?.uiSettings?.setAllGesturesEnabled(true)  // Habilitar gestos
-                findViewById<FrameLayout>(R.id.map).visibility = View.VISIBLE  // Mostrar el contenedor del mapa
+                mGoogleMap?.uiSettings?.setAllGesturesEnabled(true)
+                findViewById<FrameLayout>(R.id.map).visibility = View.VISIBLE
                 false
             } else {
                 // Cambiar a 'hide', desactivar el mapa
                 hideOrEyeImageView.setImageResource(R.drawable.hide)
-                mGoogleMap?.uiSettings?.setAllGesturesEnabled(false)  // Deshabilitar gestos
-                findViewById<FrameLayout>(R.id.map).visibility = View.GONE  // Ocultar el contenedor del mapa
+                mGoogleMap?.uiSettings?.setAllGesturesEnabled(false)
+                findViewById<FrameLayout>(R.id.map).visibility = View.GONE
                 true
             }
         }
@@ -231,8 +231,6 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mGoogleMap = googleMap
-
-        // Habilitar la capa de ubicación si se tienen los permisos necesarios
         enableMyLocation()
 
 
