@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "29012123808",
+    "firebase_url": "https://encoded-copilot-420613-default-rtdb.firebaseio.com",
+    "project_id": "encoded-copilot-420613",
+    "storage_bucket": "encoded-copilot-420613.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29012123808:android:745be51d91ee1f429e69c5",
+        "android_client_info": {
+          "package_name": "com.example.hide"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALEpJieOcB9PonFVjABNqMGBF0nNppJMc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
