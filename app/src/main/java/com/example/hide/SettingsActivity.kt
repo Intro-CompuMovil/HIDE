@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import com.example.hide.databinding.ActivitySettingsBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding
@@ -20,6 +21,7 @@ class SettingsActivity : AppCompatActivity() {
         val botonOtros = findViewById<Button>(R.id.buttonOthers)
         val botonLogOut = findViewById<Button>(R.id.buttonLogOut)
         val botonProfile = findViewById<ImageButton>(R.id.bottonRetrocederProfile)
+        val auth = FirebaseAuth.getInstance()
 
         botonNotificacion.setOnClickListener {
             val intent= Intent(this, NotificationsActivity::class.java)
@@ -34,7 +36,9 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(intent)
         }
         botonLogOut.setOnClickListener {
-            val intent= Intent(this, MainActivity::class.java)
+            auth.signOut()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
 
