@@ -33,7 +33,7 @@
         app:srcCompat="@drawable/gagalin__5_"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView14"
         android:layout_width="61dp"
         android:layout_height="68dp"
@@ -47,7 +47,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/editTextText4"
+        android:id="@+id/editTextText4b"
         android:layout_width="123dp"
         android:layout_height="33dp"
         android:ems="10"
@@ -63,7 +63,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/editTextText3"
+        android:id="@+id/editTextText3b"
         android:layout_width="122dp"
         android:layout_height="34dp"
         android:ems="10"
