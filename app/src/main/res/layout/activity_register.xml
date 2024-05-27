@@ -21,12 +21,12 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editTextFirstName"
+        android:id="@+id/editTextCompleteName"
         android:layout_width="338dp"
         android:layout_height="47dp"
         android:ems="10"
         android:inputType="text"
-        android:hint="Your First Name"
+        android:hint="Your Complete Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
@@ -36,12 +36,12 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editTextLastName"
+        android:id="@+id/editTextUserName"
         android:layout_width="338dp"
         android:layout_height="47dp"
         android:ems="10"
         android:inputType="text"
-        android:hint="Your Last Name"
+        android:hint="Your User Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
@@ -51,7 +51,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/editTextEmailAddressregister"
         android:layout_width="338dp"
         android:layout_height="47dp"
         android:ems="10"
@@ -66,11 +66,11 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editTextPickPassword"
+        android:id="@+id/editTextPickPasswordregister"
         android:layout_width="338dp"
         android:layout_height="47dp"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:hint="Pick a Password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +85,7 @@
         android:layout_width="338dp"
         android:layout_height="47dp"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:hint="Confirm Your Password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -119,5 +119,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.92"
         tools:ignore="MissingConstraints" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

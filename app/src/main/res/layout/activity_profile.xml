@@ -45,8 +45,8 @@
         app:srcCompat="@drawable/gagalin__3_"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/FotodePerfil"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/FotodePerfil1"
         android:layout_width="237dp"
         android:layout_height="216dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,10 +54,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.209"
-        app:srcCompat="@drawable/profile_png_free_image"
+        app:srcCompat="@drawable/icono"
         tools:ignore="MissingConstraints" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
