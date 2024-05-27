@@ -35,7 +35,6 @@ class UserRepository {
                         Log.i("mammamia2", user.toString())
                         onSuccess(user!!)
                     }
-
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -64,6 +63,22 @@ class UserRepository {
         }
     }
 
+    fun updateUserStatus(uid: String, status: String, onSuccess: () -> Unit, onError: (DatabaseError) -> Unit) {
+        val userRef = database.child("usuarios").child(uid)
+
+        // Crea un mapa con los campos que quieres actualizar
+        val userUpdates = hashMapOf<String, Any?>(
+            "estado" to status
+        )
+
+        userRef.updateChildren(userUpdates).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                onSuccess()
+            } else {
+                onError(task.exception as DatabaseError)
+            }
+        }
+    }
     fun getCurrentUserId(): String? {
         return auth.currentUser?.uid
     }
