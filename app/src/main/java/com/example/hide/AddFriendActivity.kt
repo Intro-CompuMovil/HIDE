@@ -2,6 +2,7 @@ package com.example.hide
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -95,6 +96,7 @@ class AddFriendActivity : AppCompatActivity() {
 
     private fun setupPotentialFriends() {
         potentialFriends = allUsers.filter { user ->
+            Log.i("mammamiatest", user.toString())
             user.uid != currentUser.uid &&
                     !currentUser.amigos.containsKey(user.uid) &&
                     !currentUser.solicitudesDeAmistad.containsKey(user.uid)

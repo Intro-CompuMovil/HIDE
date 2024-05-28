@@ -83,23 +83,31 @@ class UserRepository {
         return auth.currentUser?.uid
     }
 
-    fun getAllUsers(onSuccess: (List<User>) -> Unit, onError: (DatabaseError) -> Unit) {
-        val usersRef = database.child("usuarios")
-        usersRef.addValueEventListener(object : ValueEventListener {
+    fun getAllUsers(success: (List<User>) -> Unit, failure: (Exception) -> Unit) {
+        val usersRef = database.child("usuarios") // Asegúrate de que estás apuntando a la colección correcta en tu base de datos
+        usersRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val users = dataSnapshot.children.mapNotNull { it.getValue(User::class.java) }
-                onSuccess(users)
+                val users = mutableListOf<User>()
+                for (userSnapshot in dataSnapshot.children) {
+                    val user = userSnapshot.getValue(User::class.java)
+                    if (user != null) {
+                        user.uid =
+                            userSnapshot.key.toString() // Añade esta línea para guardar el uid en el usuario
+                        users.add(user)
+                    }
+                }
+                success(users)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                onError(databaseError)
+                failure(databaseError.toException())
             }
         })
     }
 
     fun sendFriendRequest(fromUid: String, toUid: String) {
-        val requestRef = database.child("solicitudesDeAmistad").child(toUid).child(fromUid)
-        requestRef.setValue(true)
+        val requestRef = database.child("usuarios").child(toUid).child("solicitudesDeAmistad").child(fromUid)
+        requestRef.setValue("pendiente")
     }
 
     fun getCurrentUser(onSuccess: (User) -> Unit, onError: (DatabaseError) -> Unit) {
@@ -109,5 +117,41 @@ class UserRepository {
         } else {
             // Maneja el caso en que no hay un usuario actual
         }
+    }
+    fun acceptFriendRequest(fromUid: String, toUid: String) {
+        // Eliminar la solicitud de amistad del usuario que la recibió
+        val requestRef = database.child("usuarios").child(toUid).child("solicitudesDeAmistad").child(fromUid)
+        requestRef.removeValue()
+
+        // Agregar al usuario que envió la solicitud a la lista de amigos del usuario que la recibió
+        val toFriendsRef = database.child("usuarios").child(toUid).child("amigos").child(fromUid)
+        toFriendsRef.setValue(true)
+
+        // Agregar al usuario que recibió la solicitud a la lista de amigos del usuario que la envió
+        val fromFriendsRef = database.child("usuarios").child(fromUid).child("amigos").child(toUid)
+        fromFriendsRef.setValue(true)
+    }
+
+    fun rejectFriendRequest(fromUid: String, toUid: String) {
+        // Eliminar la solicitud de amistad del usuario que la recibió
+        val requestRef = database.child("usuarios").child(toUid).child("solicitudesDeAmistad").child(fromUid)
+        requestRef.removeValue()
+    }
+
+    fun getUserByUid(uid: String, onSuccess: (User) -> Unit, onError: (DatabaseError) -> Unit) {
+        val userRef = database.child("usuarios").child(uid)
+        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val user = dataSnapshot.getValue(User::class.java)
+                if (user != null) {
+                    user.uid = dataSnapshot.key.toString()
+                    onSuccess(user)
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                onError(databaseError)
+            }
+        })
     }
 }
