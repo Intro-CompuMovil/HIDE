@@ -82,4 +82,32 @@ class UserRepository {
     fun getCurrentUserId(): String? {
         return auth.currentUser?.uid
     }
+
+    fun getAllUsers(onSuccess: (List<User>) -> Unit, onError: (DatabaseError) -> Unit) {
+        val usersRef = database.child("usuarios")
+        usersRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val users = dataSnapshot.children.mapNotNull { it.getValue(User::class.java) }
+                onSuccess(users)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                onError(databaseError)
+            }
+        })
+    }
+
+    fun sendFriendRequest(fromUid: String, toUid: String) {
+        val requestRef = database.child("solicitudesDeAmistad").child(toUid).child(fromUid)
+        requestRef.setValue(true)
+    }
+
+    fun getCurrentUser(onSuccess: (User) -> Unit, onError: (DatabaseError) -> Unit) {
+        val currentUserId = getCurrentUserId()
+        if (currentUserId != null) {
+            getUserData(currentUserId, onSuccess, onError)
+        } else {
+            // Maneja el caso en que no hay un usuario actual
+        }
+    }
 }
