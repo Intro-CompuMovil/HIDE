@@ -237,7 +237,7 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
                     val userLocation = LatLng(it.latitude, it.longitude)
                     mGoogleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))  // Establece el nivel de zoom a 15
                     if (userLocationMarker == null) {
-                        userLocationMarker = mGoogleMap?.addMarker(MarkerOptions().position(userLocation).title("Tu ubicación actual"))
+
                     } else {
                         userLocationMarker?.position = userLocation
                     }
