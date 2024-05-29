@@ -99,7 +99,8 @@ class AddFriendActivity : AppCompatActivity() {
             Log.i("mammamiatest", user.toString())
             user.uid != currentUser.uid &&
                     !currentUser.amigos.containsKey(user.uid) &&
-                    !currentUser.solicitudesDeAmistad.containsKey(user.uid)
+                    !currentUser.solicitudesDeAmistad.containsKey(user.uid) &&
+                    currentUser.estado == "activo"
         }
     }
 

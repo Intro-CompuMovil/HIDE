@@ -6,6 +6,7 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
@@ -42,10 +43,12 @@ import com.google.android.gms.maps.model.Polyline
 import okhttp3.Route
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.storage.FirebaseStorage
 import org.osmdroid.bonuspack.routing.MapQuestRoadManager
 import org.osmdroid.bonuspack.routing.RoadManager
 import org.osmdroid.bonuspack.routing.OSRMRoadManager
 import org.osmdroid.util.GeoPoint
+import java.io.ByteArrayOutputStream
 
 class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMatchFoundBinding
@@ -58,8 +61,9 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var launchCamera: ActivityResultLauncher<Intent>
     private lateinit var locationProvider: FusedLocationProviderClient
     val userRepository = UserRepository()
-
-
+    private lateinit var currentUserUid: String
+    private var opponentUid: String? = null
+    private var previousVictories: Int = 0
     private var userLocationMarker: Marker? = null
 
 
@@ -94,28 +98,21 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
          }
+        currentUserUid = FirebaseAuth.getInstance().currentUser?.uid.toString()
+
+        userRepository.observeOpponent(currentUserUid) { opponentUid ->
+            // La otra persona ha aceptado tu solicitud de desafío, comienza el juego
+            startGame()
+        }
 
         startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 // Aquí inicia el temporizador cuando el usuario regresa
                 if (requestLocationPermission()){
-                    startCountdown()
-                    binding.findmatch.visibility = View.GONE
-                    binding.textViewinformacion.visibility = View.VISIBLE
-                    binding.textViewaviso.visibility = View.VISIBLE
-                    binding.buttonphoto.visibility = View.VISIBLE
-                    locationProvider.lastLocation.addOnSuccessListener { location: Location? ->
-                        location?.let {
-                            val userLocation = LatLng(it.latitude, it.longitude)
-                            val DISTANCE = 0.0009 // valor quemado de lo que son aproximadamente 50 metros
-                            val PERSON_POSITION = LatLng(userLocation.latitude-DISTANCE,  userLocation.longitude)
-                            val quemado = LatLng( 4.62714,  -74.06258)
-                            val targetLocation = calculateMidPoint(userLocation, PERSON_POSITION)
-
-                            drawCircle(targetLocation)
-                            drawRouteFromCurrentLocationToCircleCenter(userLocation, targetLocation)
-                        }
-                    }}
+                startGame()
+                }
+            } else if (result.resultCode == 20) {
+                binding.findmatch.isEnabled = false
             }
         }
 
@@ -157,16 +154,64 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
 
-
+        userRepository.getUserByUid(currentUserUid, { user ->
+            opponentUid = user.oponente
+            previousVictories = user.victorias
+        }, { error ->
+            // Handle error here
+        })
 
 
         launchCamera = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                // La foto fue tomada exitosamente, navegar a WinnerActivity
-                val intent = Intent(this, WinnerActivity::class.java)
-                startActivity(intent)
+                // La foto fue tomada exitosamente, guardar la foto en Firebase Storage y enviar la URL de la foto al oponente
+                val photo = result.data?.extras?.get("data") as Bitmap
+                val baos = ByteArrayOutputStream()
+                photo.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+                val data = baos.toByteArray()
+
+                val storageRef = FirebaseStorage.getInstance().reference
+                val photoRef = storageRef.child("challengePhotos/${currentUserUid}.jpg")
+                val uploadTask = photoRef.putBytes(data)
+                uploadTask.addOnSuccessListener {
+                    // La foto se subió exitosamente, obtener la URL de descarga y enviarla al oponente
+                    photoRef.downloadUrl.addOnSuccessListener { uri ->
+                        val photoUrl = uri.toString()
+                        opponentUid?.let { uid ->
+                            userRepository.setChallengePhoto(currentUserUid, uid, photoUrl)
+                        }
+                    }
+                }.addOnFailureListener { exception ->
+                    // Handle error here
+                }
             }
         }
+
+        userRepository.observeChallengePhoto(currentUserUid, { photoUrl ->
+            val intent = Intent(this@MatchFoundActivity, ConfirmationActivity::class.java)
+            startActivity(intent)
+        }, { error ->
+            // Handle error here
+        })
+
+        userRepository.observeVictories(currentUserUid!!, { victories ->
+            // Cuando el número de victorias cambia, navega a WinnerActivity
+
+            userRepository.getUserByUid(currentUserUid, { user ->
+                previousVictories = user.victorias
+                if (victories > previousVictories) {
+                    val intent = Intent(this, WinnerActivity::class.java)
+                    startActivity(intent)
+                    previousVictories = victories
+                }
+            }, { error ->
+                // Handle error here
+            })
+
+
+        }, { error ->
+            // Handle error here
+        })
 
         hideOrEyeImageView.setOnClickListener {
             isShowingHide = if (isShowingHide) {
@@ -354,7 +399,26 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
         mGoogleMap!!.addPolyline(polylineOptions)
     }
 
+    @SuppressLint("MissingPermission")
+    private fun startGame() {
+        startCountdown()
+        binding.findmatch.visibility = View.GONE
+        binding.textViewinformacion.visibility = View.VISIBLE
+        binding.textViewaviso.visibility = View.VISIBLE
+        binding.buttonphoto.visibility = View.VISIBLE
+        locationProvider.lastLocation.addOnSuccessListener { location: Location? ->
+            location?.let {
+                val userLocation = LatLng(it.latitude, it.longitude)
+                val DISTANCE = 0.0009 // valor quemado de lo que son aproximadamente 50 metros
+                val PERSON_POSITION = LatLng(userLocation.latitude-DISTANCE,  userLocation.longitude)
+                val quemado = LatLng( 4.62714,  -74.06258)
+                val targetLocation = calculateMidPoint(userLocation, PERSON_POSITION)
 
+                drawCircle(targetLocation)
+                drawRouteFromCurrentLocationToCircleCenter(userLocation, targetLocation)
+            }
+        }
+    }
 
 }
 
