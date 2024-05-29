@@ -2,6 +2,7 @@ package com.example.hide
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,10 +11,12 @@ import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import com.example.hide.databinding.ActivityMainBinding
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -47,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                 val intent= Intent(this, AdminActivity::class.java)
                 startActivity(intent)
         }
+        registrarDispositivo()
 
     }
 
@@ -106,6 +110,22 @@ class MainActivity : AppCompatActivity() {
         } else {
             binding.editTextEmail.setText("")
             binding.editTextPassword.setText("")
+        }
+    }
+    private fun registrarDispositivo() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(ContentValues.TAG, "Fetching FCM registration token failed", task.exception)
+                return@addOnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+
+            // Log and toast
+            val msg = getString(R.string.msg_token_fmt, token)
+            Log.d(ContentValues.TAG, msg)
+            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
         }
     }
 

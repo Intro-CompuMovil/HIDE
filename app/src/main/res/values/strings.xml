@@ -47,4 +47,5 @@
     <string name="register" />
     <string name="don_t_have_an_account" />
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="msg_token_fmt">Token FCM: %1$s</string>
 </resources>
