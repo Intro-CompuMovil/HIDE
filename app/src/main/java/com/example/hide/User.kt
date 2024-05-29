@@ -15,7 +15,7 @@ data class User(
     var oponente: String? = null,
     var imageBitmap: Bitmap? = null ,
     val amigos: MutableMap<String, Boolean> = mutableMapOf(),
-    val solicitudesDeAmistad: MutableMap<String, String> = mutableMapOf()
-
-
+    val solicitudesDeAmistad: MutableMap<String, String> = mutableMapOf(),
+    val solicitudesDeDesafio: MutableMap<String, String> = mutableMapOf(),
+    val fotoDesafio: String? = null
 )

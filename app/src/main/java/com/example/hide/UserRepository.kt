@@ -183,4 +183,114 @@ class UserRepository {
         val friendFriendsRef = database.child("usuarios").child(friendUid).child("amigos").child(currentUserUid)
         friendFriendsRef.removeValue()
     }
+
+    fun sendChallengeRequest(friendUid: String) {
+        val currentUserUid = getCurrentUserId()!!
+
+        // Add the current user to the friend's challenge requests
+        val friendChallengeRequestsRef = database.child("usuarios").child(friendUid).child("solicitudesDeDesafio").child(currentUserUid)
+        friendChallengeRequestsRef.setValue("pendiente")
+    }
+
+    fun setOpponent(userUid: String, opponentUid: String) {
+        val userRef = database.child("usuarios").child(userUid)
+        userRef.child("oponente").setValue(opponentUid)
+
+        val friendRef = database.child("usuarios").child(opponentUid)
+        friendRef.child("oponente").setValue(userUid)
+
+        val friendChallengeRequestsRef = database.child("usuarios").child(userUid).child("solicitudesDeDesafio").child(opponentUid)
+        friendChallengeRequestsRef.removeValue()
+
+    }
+
+    fun removeChallenge(userUid: String, opponentUid: String) {
+
+        val friendChallengeRequestsRef = database.child("usuarios").child(userUid).child("solicitudesDeDesafio").child(opponentUid)
+        friendChallengeRequestsRef.removeValue()
+
+    }
+
+    fun observeOpponent(userUid: String, onOpponentChanged: (String) -> Unit) {
+        val userRef = database.child("usuarios").child(userUid)
+        val opponentRef = userRef.child("oponente")
+        opponentRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val opponentUid = dataSnapshot.getValue(String::class.java)
+                if (opponentUid != null) {
+                    onOpponentChanged(opponentUid)
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle error here
+            }
+        })
+    }
+
+    fun removeOpponent(userUid: String) {
+        val userRef = database.child("usuarios").child(userUid)
+        userRef.child("oponente").removeValue()
+    }
+
+    fun setChallengePhoto(userUid: String, opponentUid: String, photoUrl: String) {
+        val opponentRef = database.child("usuarios").child(opponentUid)
+        opponentRef.child("fotoDesafio").setValue(photoUrl)
+    }
+
+    fun setGameStatus(userUid: String, opponentUid: String) {
+        val userRef = database.child("usuarios").child(userUid)
+        val opponentRef = database.child("usuarios").child(opponentUid)
+
+        userRef.child("derrotas").get().addOnSuccessListener { dataSnapshot ->
+            val derrotas = dataSnapshot.getValue(Int::class.java) ?: 0
+            userRef.child("derrotas").setValue(derrotas + 1)
+        }
+
+        opponentRef.child("victorias").get().addOnSuccessListener { dataSnapshot ->
+            val victorias = dataSnapshot.getValue(Int::class.java) ?: 0
+            opponentRef.child("victorias").setValue(victorias + 1)
+        }
+    }
+
+    fun observeChallengePhoto(userUid: String, onPhotoChanged: (String) -> Unit, onError: (DatabaseError) -> Unit) {
+        val userRef = database.child("usuarios").child(userUid)
+        val photoRef = userRef.child("fotoDesafio")
+        photoRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val photoUrl = dataSnapshot.getValue(String::class.java)
+                if (photoUrl != null) {
+                    onPhotoChanged(photoUrl)
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                onError(databaseError)
+            }
+        })
+    }
+
+    fun observeVictories(userUid: String, onVictoriesChanged: (Int) -> Unit, onError: (DatabaseError) -> Unit) {
+        val userRef = database.child("usuarios").child(userUid)
+        val victoriesRef = userRef.child("victorias")
+        victoriesRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val victories = dataSnapshot.getValue(Int::class.java) ?: 0
+                onVictoriesChanged(victories)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                onError(databaseError)
+            }
+        })
+    }
+
+    fun deleteChallengePhoto(userUid: String, onSuccess: () -> Unit, onError: (DatabaseError) -> Unit) {
+        val userRef = database.child("usuarios").child(userUid)
+        userRef.child("fotoDesafio").removeValue().addOnSuccessListener {
+            onSuccess()
+        }.addOnFailureListener { exception ->
+            onError(DatabaseError.fromException(exception))
+        }
+    }
 }
