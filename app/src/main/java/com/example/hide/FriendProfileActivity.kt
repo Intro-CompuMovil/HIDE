@@ -39,7 +39,7 @@ class FriendProfileActivity : AppCompatActivity() {
         val botonRetroceder = findViewById<ImageButton>(R.id.bottonRetroceder)
 
         botonRetroceder.setOnClickListener{
-            val intent= Intent(this, AddFriendActivity::class.java)
+            val intent= Intent(this, MatchFoundActivity::class.java)
             startActivity(intent)
         }
     }
