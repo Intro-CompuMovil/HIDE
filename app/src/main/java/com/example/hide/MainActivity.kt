@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         }
         registrarDispositivo()
 
+
     }
 
     private fun signInUser(email: String, password: String){
@@ -113,10 +114,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun registrarDispositivo() {
-        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
-                Log.w(ContentValues.TAG, "Fetching FCM registration token failed", task.exception)
-                return@addOnCompleteListener
+                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
             }
 
             // Get new FCM registration token
@@ -124,9 +125,9 @@ class MainActivity : AppCompatActivity() {
 
             // Log and toast
             val msg = getString(R.string.msg_token_fmt, token)
-            Log.d(ContentValues.TAG, msg)
+            Log.d(TAG, msg)
             Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-        }
+        })
     }
 
     override fun onStart() {
