@@ -41,6 +41,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.Polyline
 import okhttp3.Route
 import com.google.android.gms.maps.model.PolylineOptions
+import com.google.firebase.auth.FirebaseAuth
 import org.osmdroid.bonuspack.routing.MapQuestRoadManager
 import org.osmdroid.bonuspack.routing.RoadManager
 import org.osmdroid.bonuspack.routing.OSRMRoadManager
@@ -56,6 +57,8 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var startForResult: ActivityResultLauncher<Intent>
     private lateinit var launchCamera: ActivityResultLauncher<Intent>
     private lateinit var locationProvider: FusedLocationProviderClient
+    val userRepository = UserRepository()
+
 
     private var userLocationMarker: Marker? = null
 
@@ -81,6 +84,10 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
         val botonPerfil = findViewById<ImageView>(R.id.imageViewProfile)
         val botonMatch = findViewById<Button>(R.id.findmatch)
 
+        binding.textViewinformacion.visibility = View.GONE
+        binding.textViewaviso.visibility = View.GONE
+        binding.buttonphoto.visibility = View.GONE
+
         botonMatch.setOnClickListener {
             val intent = Intent(this, FindMatchActivity::class.java)
             startForResult.launch(intent)
@@ -93,6 +100,10 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
                 // Aquí inicia el temporizador cuando el usuario regresa
                 if (requestLocationPermission()){
                     startCountdown()
+                    binding.findmatch.visibility = View.GONE
+                    binding.textViewinformacion.visibility = View.VISIBLE
+                    binding.textViewaviso.visibility = View.VISIBLE
+                    binding.buttonphoto.visibility = View.VISIBLE
                     locationProvider.lastLocation.addOnSuccessListener { location: Location? ->
                         location?.let {
                             val userLocation = LatLng(it.latitude, it.longitude)
@@ -163,12 +174,33 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
                 hideOrEyeImageView.setImageResource(R.drawable.eye)
                 mGoogleMap?.uiSettings?.setAllGesturesEnabled(true)
                 findViewById<FrameLayout>(R.id.map).visibility = View.VISIBLE
+
+                val user = FirebaseAuth.getInstance().currentUser
+                if (user != null) {
+                    userRepository.updateUserStatus(user.uid, "activo", {
+                        // Maneja el éxito
+                    }, { error ->
+                        // Maneja el error
+                    })
+                }
+
                 false
+
             } else {
                 // Cambiar a 'hide', desactivar el mapa
                 hideOrEyeImageView.setImageResource(R.drawable.hide)
                 mGoogleMap?.uiSettings?.setAllGesturesEnabled(false)
                 findViewById<FrameLayout>(R.id.map).visibility = View.GONE
+
+                val user = FirebaseAuth.getInstance().currentUser
+                if (user != null) {
+                    userRepository.updateUserStatus(user.uid, "inactivo", {
+                        // Maneja el éxito
+                    }, { error ->
+                        // Maneja el error
+                    })
+                }
+
                 true
             }
         }

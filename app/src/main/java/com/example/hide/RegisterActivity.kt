@@ -120,6 +120,8 @@ class RegisterActivity : AppCompatActivity() {
                         "victorias" to 0,
                         "derrotas" to 0,
                         "oponente" to null,
+                        "amigos" to mutableMapOf<String, Boolean>(),
+                        "solicitudesDeAmistad" to mutableMapOf<String, String>()
                     )
                     db.reference.child("usuarios").child(user!!.uid).setValue(userData)
                         .addOnSuccessListener {

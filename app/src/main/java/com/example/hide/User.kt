@@ -13,6 +13,9 @@ data class User(
     var estado: String? = null,
     var descripcion: String? = null,
     var oponente: String? = null,
-    var imageBitmap: Bitmap? = null
+    var imageBitmap: Bitmap? = null ,
+    val amigos: MutableMap<String, Boolean> = mutableMapOf(),
+    val solicitudesDeAmistad: MutableMap<String, String> = mutableMapOf()
 
-    )
+
+)

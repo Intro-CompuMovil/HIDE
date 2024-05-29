@@ -23,7 +23,7 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val botonEditPerfil = findViewById<ImageView>(R.id.FotodePerfil1)
-        botonEditPerfil.setImageResource(R.drawable.profile_png_free_image) // replace 'profile_png_free_image' with your actual image name
+        botonEditPerfil.setImageResource(R.drawable.profile_png_free_image)
 
         val botonConfig = findViewById<Button>(R.id.buttonSetting)
         val botonRegreso = findViewById<ImageButton>(R.id.bottonRetroceder)
