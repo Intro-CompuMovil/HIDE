@@ -33,14 +33,35 @@ class WinnerActivity : AppCompatActivity() {
                     user.oponente?.let { opponentUid ->
                         userRepository.removeOpponent(uid)
                         userRepository.removeOpponent(opponentUid)
+                        userRepository.removeGameStatus(currentUserUid!!, {
+                            val intent= Intent(this, MatchFoundActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }, { error ->
+                            // Handle error here
+                        })
+
+                    }
+                }, { error ->
+                    userRepository.removeGameStatus(currentUserUid!!, {
                         val intent= Intent(this, MatchFoundActivity::class.java)
                         startActivity(intent)
-                    }
+                        finish()
+                    }, { error ->
+                        // Handle error here
+                    })
+                })
+                userRepository.removeGameStatus(currentUserUid!!, {
+                    val intent= Intent(this, MatchFoundActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }, { error ->
                     // Handle error here
                 })
             }
-
+            val intent= Intent(this, MatchFoundActivity::class.java)
+            startActivity(intent)
+            finish()
 
 
         }

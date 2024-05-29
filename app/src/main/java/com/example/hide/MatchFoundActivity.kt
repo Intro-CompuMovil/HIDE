@@ -63,7 +63,6 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     val userRepository = UserRepository()
     private lateinit var currentUserUid: String
     private var opponentUid: String? = null
-    private var previousVictories: Int = 0
     private var userLocationMarker: Marker? = null
 
 
@@ -156,7 +155,6 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
 
         userRepository.getUserByUid(currentUserUid, { user ->
             opponentUid = user.oponente
-            previousVictories = user.victorias
         }, { error ->
             // Handle error here
         })
@@ -194,21 +192,12 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
             // Handle error here
         })
 
-        userRepository.observeVictories(currentUserUid!!, { victories ->
-            // Cuando el número de victorias cambia, navega a WinnerActivity
-
-            userRepository.getUserByUid(currentUserUid, { user ->
-                previousVictories = user.victorias
-                if (victories > previousVictories) {
-                    val intent = Intent(this, WinnerActivity::class.java)
-                    startActivity(intent)
-                    previousVictories = victories
-                }
-            }, { error ->
-                // Handle error here
-            })
-
-
+        userRepository.observeGameStatus(currentUserUid, { gameStatus ->
+            // Cuando el estado del juego cambia a "ganaste", navega a WinnerActivity
+            if (gameStatus == "ganaste") {
+                val intent = Intent(this, WinnerActivity::class.java)
+                startActivity(intent)
+            }
         }, { error ->
             // Handle error here
         })

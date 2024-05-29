@@ -250,6 +250,8 @@ class UserRepository {
         opponentRef.child("victorias").get().addOnSuccessListener { dataSnapshot ->
             val victorias = dataSnapshot.getValue(Int::class.java) ?: 0
             opponentRef.child("victorias").setValue(victorias + 1)
+            opponentRef.child("estadoJuego").setValue("ganaste")
+
         }
     }
 
@@ -270,19 +272,29 @@ class UserRepository {
         })
     }
 
-    fun observeVictories(userUid: String, onVictoriesChanged: (Int) -> Unit, onError: (DatabaseError) -> Unit) {
+    fun observeGameStatus(userUid: String, onGameStatusChanged: (String) -> Unit, onError: (DatabaseError) -> Unit) {
         val userRef = database.child("usuarios").child(userUid)
-        val victoriesRef = userRef.child("victorias")
-        victoriesRef.addValueEventListener(object : ValueEventListener {
+        val gameStatusRef = userRef.child("estadoJuego")
+        gameStatusRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val victories = dataSnapshot.getValue(Int::class.java) ?: 0
-                onVictoriesChanged(victories)
+                val gameStatus = dataSnapshot.getValue(String::class.java)
+                if (gameStatus != null) {
+                    onGameStatusChanged(gameStatus)
+                }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
                 onError(databaseError)
             }
         })
+    }
+    fun removeGameStatus(userUid: String, onSuccess: () -> Unit, onError: (DatabaseError) -> Unit) {
+        val userRef = database.child("usuarios").child(userUid)
+        userRef.child("estadoJuego").removeValue().addOnSuccessListener {
+            onSuccess()
+        }.addOnFailureListener { exception ->
+            onError(DatabaseError.fromException(exception))
+        }
     }
 
     fun deleteChallengePhoto(userUid: String, onSuccess: () -> Unit, onError: (DatabaseError) -> Unit) {
