@@ -39,16 +39,33 @@ class LoseActivity : AppCompatActivity() {
                         userRepository.deleteChallengePhoto(currentUserUid!!, {
                             val intent = Intent(this, MatchFoundActivity::class.java)
                             startActivity(intent)
+                            finish()
                         }, { error ->
                             // Handle error here
                         })
 
                     }
                 }, { error ->
-                 Log.i("mama", "error")
+                    userRepository.deleteChallengePhoto(currentUserUid!!, {
+                        val intent = Intent(this, MatchFoundActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }, { error ->
+                        // Handle error here
+                    })
+                })
+
+                userRepository.deleteChallengePhoto(currentUserUid!!, {
+                    val intent = Intent(this, MatchFoundActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }, { error ->
+                    // Handle error here
                 })
             }
-
+            val intent = Intent(this, MatchFoundActivity::class.java)
+            startActivity(intent)
+            finish()
 
         }
     }
