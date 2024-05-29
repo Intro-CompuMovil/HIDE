@@ -85,7 +85,7 @@ class UserRepository {
 
     fun getAllUsers(success: (List<User>) -> Unit, failure: (Exception) -> Unit) {
         val usersRef = database.child("usuarios") // Asegúrate de que estás apuntando a la colección correcta en tu base de datos
-        usersRef.addListenerForSingleValueEvent(object : ValueEventListener {
+        usersRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val users = mutableListOf<User>()
                 for (userSnapshot in dataSnapshot.children) {
@@ -93,6 +93,8 @@ class UserRepository {
                     if (user != null) {
                         user.uid =
                             userSnapshot.key.toString() // Añade esta línea para guardar el uid en el usuario
+
+
                         users.add(user)
                     }
                 }
@@ -140,12 +142,27 @@ class UserRepository {
 
     fun getUserByUid(uid: String, onSuccess: (User) -> Unit, onError: (DatabaseError) -> Unit) {
         val userRef = database.child("usuarios").child(uid)
-        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+        userRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val user = dataSnapshot.getValue(User::class.java)
                 if (user != null) {
                     user.uid = dataSnapshot.key.toString()
-                    onSuccess(user)
+
+                    val imageRef = storage.getReference("profileImages/${user!!.uid}")
+                    val ONE_MEGABYTE: Long = 1024 * 1024
+
+                    imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener { bytes ->
+                        val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+                        user.imageBitmap = bitmap
+                        Log.i("mammamia3", user.toString())
+                        onSuccess(user!!)
+                    }.addOnFailureListener { exception ->
+                        // Si la descarga falla, maneja el error
+                        Log.e("Firebase", "Error al descargar la imagen", exception)
+                        Log.i("mammamia3", user.toString())
+                        onSuccess(user!!)
+                    }
+                  //  onSuccess(user)
                 }
             }
 
@@ -153,5 +170,17 @@ class UserRepository {
                 onError(databaseError)
             }
         })
+    }
+
+    fun removeFriend(friendUid: String) {
+        val currentUserUid = getCurrentUserId()!!// Obtén el UID del usuario actual aquí
+
+        // Elimina al amigo de la lista de amigos del usuario actual
+        val currentUserFriendsRef = database.child("usuarios").child(currentUserUid).child("amigos").child(friendUid)
+        currentUserFriendsRef.removeValue()
+
+        // Elimina al usuario actual de la lista de amigos del amigo
+        val friendFriendsRef = database.child("usuarios").child(friendUid).child("amigos").child(currentUserUid)
+        friendFriendsRef.removeValue()
     }
 }

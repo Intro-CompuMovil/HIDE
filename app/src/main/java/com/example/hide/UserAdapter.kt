@@ -1,5 +1,6 @@
 package com.example.hide
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,8 +25,15 @@ class UserAdapter(private val users: List<User>, private val onButtonClick: (Use
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val user = users[position]
         holder.userNameTextView.text = user.nombre
-        holder.userUsernameTextView.text = "@${user.usuario}" // Asume que la clase User tiene un campo 'usuario'
+        holder.userUsernameTextView.text = "@${user.usuario}"
         holder.addButton.setOnClickListener { onButtonClick(user) }
+
+        holder.view.setOnClickListener {
+            val context = holder.view.context
+            val intent = Intent(context, FriendProfileActivity::class.java)
+            intent.putExtra("USER_UID", user.uid)
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount() = users.size

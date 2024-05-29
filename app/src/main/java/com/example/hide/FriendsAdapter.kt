@@ -1,5 +1,6 @@
 package com.example.hide
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +27,20 @@ class FriendsAdapter(
         userRepository.getUserByUid(friend, { user ->
             holder.view.findViewById<TextView>(R.id.namerecommendedfriend3).text = user.nombre
             holder.view.findViewById<TextView>(R.id.userrecomended3).text = "@${user.usuario}"
-        }, { error ->
+
+
+            holder.view.setOnClickListener {
+                val context = holder.view.context
+                val intent = Intent(context, FriendProfileActivity::class.java)
+                intent.putExtra("USER_UID", friend)
+                context.startActivity(intent)
+            }
+
+
+            holder.view.findViewById<ImageView>(R.id.imageViewDelete).setOnClickListener {
+                userRepository.removeFriend(friend)
+            }
+                                            }, { error ->
             // Handle error here
         })
 
