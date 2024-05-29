@@ -1,0 +1,35 @@
+{
+  "project_info": {
+
+    "project_number": "516697672031",
+    "project_id": "hide-5ca11",
+    "storage_bucket": "hide-5ca11.appspot.com"
+
+  },
+  "client": [
+    {
+      "client_info": {
+
+        "mobilesdk_app_id": "1:516697672031:android:c25a47e28eb55b29558eea",
+
+        "android_client_info": {
+          "package_name": "com.example.hide"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+
+       "current_key": "AIzaSyBTzcKTuRSbbiK90iw460_Tm7NkEUDm4UE"
+
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

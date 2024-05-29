@@ -22,25 +22,25 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-
+        android:id="@+id/textViewDerrotas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Derrotas :150 "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.246"
+        app:layout_constraintHorizontal_bias="0.241"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.653" />
+        app:layout_constraintVertical_bias="0.615" />
 
     <TextView
-
+        android:id="@+id/textViewEstado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ultima Conexion:  4 horas"
+        android:text="Estado: activo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.317"
+        app:layout_constraintHorizontal_bias="0.241"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,8 +58,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.082" />
 
-    <ImageView
-        android:id="@+id/FotodePerfil"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/FotodePerfil5"
         android:layout_width="237dp"
         android:layout_height="216dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,14 +71,24 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewVictorias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Victorias :300"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.246"
+        app:layout_constraintHorizontal_bias="0.24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.578" />
+        app:layout_constraintVertical_bias="0.559" />
+
+    <TextView
+        android:id="@+id/textViewDescripcion"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="32dp"
+        android:text="Descripción: Estoy jugando a HIDE"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDerrotas" />
 </androidx.constraintlayout.widget.ConstraintLayout>
