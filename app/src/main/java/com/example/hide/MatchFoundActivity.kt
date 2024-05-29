@@ -84,6 +84,10 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
         val botonPerfil = findViewById<ImageView>(R.id.imageViewProfile)
         val botonMatch = findViewById<Button>(R.id.findmatch)
 
+        binding.textViewinformacion.visibility = View.GONE
+        binding.textViewaviso.visibility = View.GONE
+        binding.buttonphoto.visibility = View.GONE
+
         botonMatch.setOnClickListener {
             val intent = Intent(this, FindMatchActivity::class.java)
             startForResult.launch(intent)
@@ -96,6 +100,10 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
                 // Aquí inicia el temporizador cuando el usuario regresa
                 if (requestLocationPermission()){
                     startCountdown()
+                    binding.findmatch.visibility = View.GONE
+                    binding.textViewinformacion.visibility = View.VISIBLE
+                    binding.textViewaviso.visibility = View.VISIBLE
+                    binding.buttonphoto.visibility = View.VISIBLE
                     locationProvider.lastLocation.addOnSuccessListener { location: Location? ->
                         location?.let {
                             val userLocation = LatLng(it.latitude, it.longitude)
