@@ -15,6 +15,10 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hide.databinding.ActivityAddfriendBinding
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.RemoteMessage
+import okhttp3.*
+import java.io.IOException
 
 class AddFriendActivity : AppCompatActivity() {
 
@@ -23,6 +27,7 @@ class AddFriendActivity : AppCompatActivity() {
     private lateinit var currentUser: User
     private lateinit var allUsers: List<User>
     private lateinit var potentialFriends: List<User>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -48,13 +53,13 @@ class AddFriendActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-   /*     Amigo.setOnClickListener {
-            val intent= Intent(this, FriendProfileActivity::class.java)
-            startActivity(intent)
-        }*/
+        /*     Amigo.setOnClickListener {
+                 val intent= Intent(this, FriendProfileActivity::class.java)
+                 startActivity(intent)
+             }*/
 
 
-       botonMisAmigos.setOnClickListener{
+        botonMisAmigos.setOnClickListener{
             val intent= Intent(this, MyFriendsActivity::class.java)
             startActivity(intent)
         }
@@ -69,11 +74,7 @@ class AddFriendActivity : AppCompatActivity() {
             val intent= Intent(this, MatchFoundActivity::class.java)
             startActivity(intent)
         }
-
-
-
     }
-
 
     private fun setupCurrentUser() {
         userRepository.getCurrentUser({ currentUser ->
@@ -111,5 +112,37 @@ class AddFriendActivity : AppCompatActivity() {
 
     private fun sendFriendRequest(user: User) {
         userRepository.sendFriendRequest(currentUser.uid, user.uid)
+
+        // After sending the friend request, also send a notification to the user.
+        sendNotificationRequest(user.fcmToken, "${currentUser.nombre} te ha enviado una solicitud de amistad.")
+    }
+
+    private fun sendNotificationRequest(receiverFcmToken: String?, message: String) {
+        if (receiverFcmToken == null) {
+            // Handle the null case
+            return
+        }
+
+        val client = OkHttpClient()
+
+        val requestBody = FormBody.Builder()
+            .add("token", receiverFcmToken)
+            .add("message", message)
+            .build()
+
+        val request = Request.Builder()
+            .url("https://us-central1-<hide-5ca11>.cloudfunctions.net/sendNotification")
+            .post(requestBody)
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                // Handle the error
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                // The notification was successfully sent
+            }
+        })
     }
 }

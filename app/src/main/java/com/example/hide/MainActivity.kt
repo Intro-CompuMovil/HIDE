@@ -15,13 +15,14 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
-
+    private var currentUser: User? = null
 
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -123,13 +124,24 @@ class MainActivity : AppCompatActivity() {
             // Get new FCM registration token
             val token = task.result
 
+            // Save the token in the current user instance
+            // Assuming currentUser is an instance of User
+            currentUser?.fcmToken = token
+
+            // Save the token in Firebase database
+            val userId = FirebaseAuth.getInstance().currentUser?.uid
+            if (userId != null) {
+                val database = FirebaseDatabase.getInstance()
+                val myRef = database.getReference("users").child(userId)
+                myRef.child("fcmToken").setValue(token)
+            }
+
             // Log and toast
             val msg = getString(R.string.msg_token_fmt, token)
             Log.d(TAG, msg)
             Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
         })
     }
-
     override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
