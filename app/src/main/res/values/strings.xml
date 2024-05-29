@@ -5,6 +5,7 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="google_map_api_key">AIzaSyD0lhHT4phpEGMCH6NJCOpetqGU4wlmpxI</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
@@ -45,4 +46,6 @@
     <string name="forget_password" />
     <string name="register" />
     <string name="don_t_have_an_account" />
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="msg_token_fmt">Token FCM: %1$s</string>
 </resources>
