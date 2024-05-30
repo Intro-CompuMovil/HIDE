@@ -350,7 +350,7 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     fun drawCircle(location: LatLng) {
         val circleOptions = CircleOptions()
             .center(location)
-            .radius(100.0) // Radio en metros
+            .radius(500.0) // Radio en metros
             .strokeWidth(3f)
             .strokeColor(Color.BLUE) // Color del borde del círculo
             .fillColor(0x220000FF) // Color de relleno del círculo con transparencia
