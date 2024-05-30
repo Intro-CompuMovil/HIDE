@@ -100,6 +100,7 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
         currentUserUid = FirebaseAuth.getInstance().currentUser?.uid.toString()
 
         userRepository.observeOpponent(currentUserUid) { opponentUid ->
+            this.opponentUid = opponentUid
             // La otra persona ha aceptado tu solicitud de desafío, comienza el juego
             startGame()
         }
@@ -270,11 +271,7 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
                 location?.let {
                     val userLocation = LatLng(it.latitude, it.longitude)
                     mGoogleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))  // Establece el nivel de zoom a 15
-                    if (userLocationMarker == null) {
-                        userLocationMarker = mGoogleMap?.addMarker(MarkerOptions().position(userLocation).title("Tu ubicación actual"))
-                    } else {
-                        userLocationMarker?.position = userLocation
-                    }
+
                 }
             }.addOnFailureListener {
                 Log.d("MapsActivity", "Error al obtener la ubicación actual")
@@ -350,7 +347,7 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     fun drawCircle(location: LatLng) {
         val circleOptions = CircleOptions()
             .center(location)
-            .radius(100.0) // Radio en metros
+            .radius(500.0) // Radio en metros
             .strokeWidth(3f)
             .strokeColor(Color.BLUE) // Color del borde del círculo
             .fillColor(0x220000FF) // Color de relleno del círculo con transparencia
@@ -395,16 +392,24 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
         binding.textViewinformacion.visibility = View.VISIBLE
         binding.textViewaviso.visibility = View.VISIBLE
         binding.buttonphoto.visibility = View.VISIBLE
+
         locationProvider.lastLocation.addOnSuccessListener { location: Location? ->
             location?.let {
                 val userLocation = LatLng(it.latitude, it.longitude)
-                val DISTANCE = 0.0009 // valor quemado de lo que son aproximadamente 50 metros
-                val PERSON_POSITION = LatLng(userLocation.latitude-DISTANCE,  userLocation.longitude)
-                val quemado = LatLng( 4.62714,  -74.06258)
-                val targetLocation = calculateMidPoint(userLocation, PERSON_POSITION)
 
-                drawCircle(targetLocation)
-                drawRouteFromCurrentLocationToCircleCenter(userLocation, targetLocation)
+                // Obtener UID del oponente
+                opponentUid?.let { uid ->
+                    userRepository.getUserByUid(uid, { opponent ->
+                        val opponentLocation = LatLng(opponent.latitud!!.toDouble(), opponent.longitud!!.toDouble())
+                        val midPoint = calculateMidPoint(userLocation, opponentLocation)
+
+                        drawCircle(midPoint)
+                        // drawRouteFromCurrentLocationToCircleCenter(userLocation, midPoint) // Comentado para evitar la línea roja
+                    }, { error ->
+                        // Maneja el error
+                        Log.e("Firebase", "Error al obtener los datos del oponente", error.toException())
+                    })
+                }
             }
         }
     }
