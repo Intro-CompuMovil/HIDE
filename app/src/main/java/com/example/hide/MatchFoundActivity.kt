@@ -11,6 +11,7 @@ import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Looper
 import android.os.StrictMode
 import android.provider.MediaStore
 import android.telecom.Call
@@ -29,12 +30,16 @@ import androidx.core.content.ContextCompat
 import com.example.hide.databinding.ActivityMatchFoundBinding
 import com.google.android.gms.common.api.Response
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapFragment
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.Circle
 import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
@@ -50,6 +55,7 @@ import org.osmdroid.bonuspack.routing.OSRMRoadManager
 import org.osmdroid.util.GeoPoint
 import java.io.ByteArrayOutputStream
 
+
 class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMatchFoundBinding
     private val REQUEST_CAMERA_PERMISSION = 101
@@ -64,7 +70,7 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var currentUserUid: String
     private var opponentUid: String? = null
     private var userLocationMarker: Marker? = null
-
+    private var currentCircle: Circle? = null
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -345,13 +351,14 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     fun drawCircle(location: LatLng) {
+        currentCircle?.remove()
         val circleOptions = CircleOptions()
             .center(location)
             .radius(500.0) // Radio en metros
             .strokeWidth(3f)
             .strokeColor(Color.BLUE) // Color del borde del círculo
             .fillColor(0x220000FF) // Color de relleno del círculo con transparencia
-        mGoogleMap?.addCircle(circleOptions)
+        currentCircle = mGoogleMap?.addCircle(circleOptions)
 
 
     }
@@ -393,25 +400,43 @@ class MatchFoundActivity : AppCompatActivity(), OnMapReadyCallback {
         binding.textViewaviso.visibility = View.VISIBLE
         binding.buttonphoto.visibility = View.VISIBLE
 
-        locationProvider.lastLocation.addOnSuccessListener { location: Location? ->
-            location?.let {
-                val userLocation = LatLng(it.latitude, it.longitude)
+        val locationRequest = LocationRequest.create().apply {
+            interval = 10000 // Actualiza la ubicación cada 10 segundos
+            fastestInterval = 5000 // Actualiza la ubicación como máximo cada 5 segundos
+            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        }
 
-                // Obtener UID del oponente
-                opponentUid?.let { uid ->
-                    userRepository.getUserByUid(uid, { opponent ->
-                        val opponentLocation = LatLng(opponent.latitud!!.toDouble(), opponent.longitud!!.toDouble())
-                        val midPoint = calculateMidPoint(userLocation, opponentLocation)
+        val locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult) {
+                locationResult ?: return
+                for (location in locationResult.locations) {
+                    val userLocation = LatLng(location.latitude, location.longitude)
 
-                        drawCircle(midPoint)
-                        // drawRouteFromCurrentLocationToCircleCenter(userLocation, midPoint) // Comentado para evitar la línea roja
+                    // Actualiza la ubicación del usuario en la base de datos
+                    userRepository.updateUserLocation(currentUserUid, location.latitude, location.longitude, {
+                        // La ubicación del usuario se actualizó con éxito
                     }, { error ->
-                        // Maneja el error
-                        Log.e("Firebase", "Error al obtener los datos del oponente", error.toException())
+                        // Handle error here
                     })
+
+                    // Obtén la ubicación del oponente y dibuja el círculo
+                    opponentUid?.let { uid ->
+                        userRepository.getUserByUid(uid, { opponent ->
+                            val opponentLocation = LatLng(opponent.latitud!!.toDouble(), opponent.longitud!!.toDouble())
+                            val midPoint = calculateMidPoint(userLocation, opponentLocation)
+
+                            drawCircle(midPoint)
+                            // drawRouteFromCurrentLocationToCircleCenter(userLocation, midPoint) // Comentado para evitar la línea roja
+                        }, { error ->
+                            // Maneja el error
+                            Log.e("Firebase", "Error al obtener los datos del oponente", error.toException())
+                        })
+                    }
                 }
             }
         }
+
+        LocationServices.getFusedLocationProviderClient(this).requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper())
     }
 
 }

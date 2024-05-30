@@ -305,4 +305,14 @@ class UserRepository {
             onError(DatabaseError.fromException(exception))
         }
     }
+
+    fun updateUserLocation(userUid: String, lat: Double, lon: Double, onSuccess: () -> Unit, onError: (DatabaseError) -> Unit) {
+        val userRef = database.child("usuarios").child(userUid)
+        val locationMap = mapOf("latitud" to lat, "longitud" to lon) // Cambiado de lat.toString() y lon.toString() a lat y lon
+        userRef.updateChildren(locationMap).addOnSuccessListener {
+            onSuccess()
+        }.addOnFailureListener { exception ->
+            onError(DatabaseError.fromException(exception))
+        }
+    }
 }
