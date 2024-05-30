@@ -48,4 +48,5 @@
     <string name="don_t_have_an_account" />
     <string name="title_activity_maps">MapsActivity</string>
     <string name="msg_token_fmt">Token FCM: %1$s</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
 </resources>
